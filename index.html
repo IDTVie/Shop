@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDTV Éire | The All-In-One Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Palette: Deep Luxury Irish */
+            --bg-black: #050a06; 
+            --bg-card: #0f1610;
+            --text-main: #ffffff;
+            --text-muted: #a1a1a1;
+            
+            /* The Emerald & Gold Theme */
+            --irish-green: #009A49;
+            --premium-gold: #D4AF37;
+
+            /* Gradient: Deep Emerald into Gold */
+            --premium-gradient: linear-gradient(135deg, #005c28 0%, #009A49 50%, #D4AF37 100%);
+            
+            /* UI Elements */
+            --glass-bg: rgba(5, 15, 8, 0.85);
+            --glass-border: 1px solid rgba(0, 154, 73, 0.2);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-black);
+            color: var(--text-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- PREMIUM NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .logo { display: flex; align-items: center; gap: 10px; }
+        
+        /* Updated Logo Sizing to fit the new aspect ratio */
+        .logo img {
+            height: 55px; /* Increased slightly for better visibility */
+            width: auto;
+            object-fit: contain;
+            border-radius: 4px; /* Optional: adds a slight curve to match the design */
+        }
+        
+        /* Fallback text if logo image breaks */
+        .logo-text {
+            font-weight: 700; font-size: 1.2rem; letter-spacing: 1px;
+            color: white; display: none; 
+        }
+        @media screen and (min-width: 768px) { .logo-text { display: block; } }
+
+        .nav-actions { display: flex; align-items: center; gap: 20px; }
+        
+        .login-link { color: #ccc; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .login-link:hover { color: var(--premium-gold); }
+
+        .nav-btn-outline {
+            background: transparent; border: 1px solid rgba(255,255,255,0.3);
+            color: white; padding: 8px 24px; border-radius: 50px;
+            font-size: 0.85rem; text-decoration: none; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+        }
+        .nav-btn-outline:hover { 
+            border-color: var(--irish-green); 
+            color: var(--irish-green); 
+            background: rgba(0, 154, 73, 0.1);
+        }
+
+        /* --- CINEMATIC HERO (Updated with Ken Burns Effect) --- */
+        .hero-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; 
+            transform: scale(1);
+            transition: opacity 2s ease-in-out, transform 10s ease; /* The Zoom Effect */
+            z-index: 1;
+        }
+
+        .carousel-slide::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(0,20,5,0.3) 0%, #050a06 100%);
+        }
+        
+        .carousel-slide.active { 
+            opacity: 1; 
+            z-index: 2; 
+            transform: scale(1.1); /* Slow zoom in */
+        }
+
+        .hero-content {
+            position: relative; z-index: 10;
+            margin-left: 5%;
+            max-width: 700px;
+            padding-right: 20px;
+        }
+
+        .premium-tag {
+            display: inline-block;
+            background: rgba(0, 154, 73, 0.15);
+            color: var(--irish-green);
+            border: 1px solid rgba(0, 154, 73, 0.4);
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem; line-height: 1.1; font-weight: 800; margin: 0 0 25px 0;
+            letter-spacing: -2px;
+            /* Subtle text gradient */
+            background: linear-gradient(to right, #fff 0%, #ddd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem; color: #d1d1d1; font-weight: 300; line-height: 1.6; margin-bottom: 40px;
+            max-width: 600px;
+        }
+        
+        .highlight-gold { color: var(--premium-gold); font-weight: 600; -webkit-text-fill-color: var(--premium-gold); }
+
+        /* --- BUTTONS --- */
+        .btn-emerald {
+            background: var(--premium-gradient);
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 154, 73, 0.2);
+            text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+            position: relative; overflow: hidden;
+        }
+        
+        /* Button Shine Animation */
+        .btn-emerald::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-emerald:hover::after { left: 100%; }
+        
+        .btn-emerald:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 154, 73, 0.4);
+        }
+
+        /* --- PRICING SECTION --- */
+        .value-section {
+            position: relative; z-index: 20;
+            background: var(--bg-black);
+            padding: 100px 5%;
+            border-top: 1px solid #1a2e1f;
+        }
+        .value-grid {
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px;
+            max-width: 1200px; margin: 0 auto; align-items: center;
+        }
+
+        .pricing-card {
+            background: linear-gradient(145deg, #0f1610, #080d09);
+            border: 1px solid #1f3324;
+            padding: 50px 40px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-color: var(--irish-green);
+        }
+        
+        .pricing-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--premium-gradient);
+        }
+
+        /* Ribbon */
+        .ribbon {
+            position: absolute; top: 20px; right: -35px;
+            background: var(--premium-gold); color: black;
+            padding: 5px 40px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+            transform: rotate(45deg); box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .price-large {
+            font-size: 3.5rem; font-weight: 800; color: white;
+            display: flex; align-items: flex-start;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            margin: 20px 0;
+        }
+        .price-large span { font-size: 1.5rem; margin-top: 10px; margin-right: 5px; color: var(--premium-gold); }
+        .price-large small { font-size: 1rem; color: var(--text-muted); font-weight: 400; margin-left: 10px; align-self: center;}
+
+        .feature-list { list-style: none; padding: 0; margin: 30px 0; }
+        .feature-list li {
+            margin-bottom: 18px; display: flex; align-items: center; color: #ddd; font-size: 1.05rem;
+        }
+        .check-icon { color: var(--irish-green); margin-right: 15px; font-weight: bold; font-size: 1.2rem; }
+
+        /* --- CONTENT ROWS --- */
+        .content-section { padding: 40px 0 80px 5%; position: relative; z-index: 20; background: var(--bg-black); }
+        .section-header { 
+            font-size: 1.3rem; color: #fff; margin-bottom: 25px; 
+            font-weight: 600; border-left: 4px solid var(--irish-green); padding-left: 15px; 
+            display: flex; align-items: center; justify-content: space-between; padding-right: 5%;
+        }
+        
+        .row-scroll {
+            display: flex; overflow-x: auto; gap: 20px; padding-bottom: 40px;
+            scroll-behavior: smooth;
+            /* Fade edges of scroll area */
+            mask-image: linear-gradient(to right, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        }
+        .row-scroll::-webkit-scrollbar { height: 4px; }
+        .row-scroll::-webkit-scrollbar-track { background: #111; }
+        .row-scroll::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+        .card {
+            min-width: 280px; height: 160px;
+            background: #1a1a1a; border-radius: 8px;
+            position: relative; overflow: hidden; cursor: pointer;
+            transition: transform 0.3s ease; border: 1px solid #333;
+        }
+        .card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; }
+        .card:hover { transform: scale(1.05); z-index: 100; border-color: var(--irish-green); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card:hover img { opacity: 1; }
+
+        /* --- FAQ SECTION (Added Feature) --- */
+        .faq-section {
+            padding: 80px 5%;
+            background: #080d09;
+            border-top: 1px solid #1a2e1f;
+        }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-header { text-align: center; margin-bottom: 50px; }
+        
+        details {
+            background: #0f1610;
+            border: 1px solid #1f3324;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        details:hover { border-color: #333; }
+        details[open] { border-color: var(--irish-green); background: #141c16; }
+        
+        summary {
+            font-weight: 600; color: white; cursor: pointer; list-style: none;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; font-size: 1.5rem; color: var(--premium-gold); }
+        details[open] summary::after { content: '-'; }
+        
+        .faq-content { margin-top: 15px; color: #bbb; line-height: 1.6; }
+
+
+        /* --- EMAIL FLOAT --- */
+        .email-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--premium-gold); 
+            color: #050a06; 
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; text-decoration: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            z-index: 2000; transition: transform 0.3s;
+            animation: pulse 3s infinite;
+        }
+        .email-float:hover { transform: scale(1.1); color: white; background: var(--irish-green); }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* --- MOBILE RESPONSIVENESS (Polished) --- */
+        @media screen and (max-width: 768px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .value-grid { grid-template-columns: 1fr; gap: 40px; }
+            .pricing-card { padding: 30px 25px; }
+            
+            .nav-actions .login-link { display: none; } 
+            .nav-btn-outline { padding: 8px 16px; font-size: 0.75rem; }
+            
+            .logo img { height: 40px; }
+            .email-float { width: 50px; height: 50px; font-size: 20px; bottom: 20px; right: 20px; }
+            
+            .row-scroll { gap: 10px; }
+            .card { min-width: 160px; height: 90px; }
+            
+            .section-header { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo">
+            <img src="LOGO.jpg" alt="IDTV Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+            <div class="logo-text" style="display:none; color:white;">IDTV ÉIRE</div>
+        </div>
+        
+        <div class="nav-actions">
+            <a href="#" class="login-link" style="margin-right: 20px;">Logáil Isteach</a>
+            <a href="#subscribe" class="nav-btn-outline">Join the Club</a>
+        </div>
+    </nav>
+
+    <div class="hero-container">
+        <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div> 
+        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div> 
+        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div> 
+        
+        <div class="hero-content">
+            <div class="premium-tag">Everything In One Place</div>
+            <h1>Every Major Platform.<br>One Subscription.</h1>
+            <p>
+                Unlock the full libraries of <span class="highlight-gold">Netflix, Disney+, Prime Video, HBO Max, and Hulu</span>. 
+                Plus, get unlimited access to Live Sports, GAA, Sky Channels, Pay-Per-View events, and international TV. 
+                <br><br>
+                The world's content, aggregated for Ireland.
+            </p>
+            
+            <button class="btn-emerald" onclick="document.getElementById('subscribe').scrollIntoView({behavior: 'smooth'})">
+                Start Full Access <i class="fas fa-arrow-right"></i>
+            </button>
+            <div style="margin-top: 20px; font-size: 0.85rem; color: #aaa; display: flex; gap: 15px; align-items: center;">
+                <span><i class="fas fa-check-circle" style="color: var(--irish-green);"></i> Instant Setup</span>
+                <span><i class="fas fa-check-circle" style="color: var(--irish-green);"></i> No VPN</span>
+                <span><i class="fas fa-check-circle" style="color: var(--irish-green);"></i> 4K UHD</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h3 class="section-header">New on Global Platforms</h3>
+        <div class="row-scroll">
+            <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=500&q=80" alt="Latest Blockbuster Movies 4K"></div>
+            <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&q=80" alt="New Cinema Releases"></div>
+            <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=500&q=80" alt="Trending TV Series"></div>
+            <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=500&q=80" alt="Netflix Originals"></div>
+            <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=500&q=80" alt="Documentaries"></div>
+        </div>
+
+        <h3 class="section-header">Live Sport & Irish Events</h3>
+        <div class="row-scroll">
+            <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&q=80" alt="Live Football Stadium"></div>
+            <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1599586120429-48285b6a8a24?w=500&q=80" alt="Soccer Premier League"></div>
+            <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?w=500&q=80" alt="Irish Landscape and GAA"></div>
+            <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=500&q=80" alt="Rugby Live"></div>
+             <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1509112756314-34a05903bfcd?w=500&q=80" alt="UFC Boxing"></div>
+        </div>
+    </div>
+
+    <div id="subscribe" class="value-section">
+        <div class="value-grid">
+            <div class="value-text">
+                <h2 style="color: white; font-size: 2.8rem; margin-top:0;">Why Choose IDTV?</h2>
+                <p style="font-size: 1.15rem; color: #bbb; line-height: 1.7;">
+                    Stop paying multiple bills every month. We combine <strong>every major streaming service</strong> and live television provider into a single, high-speed interface.
+                </p>
+                <p style="font-size: 1.05rem; color: #888;">
+                    From Premier League football and All-Ireland Finals to the latest cinema releases on Paramount+ and AppleTV. If it exists, it's on IDTV.
+                </p>
+                
+                <div style="margin-top: 40px;">
+                    <h4 style="color:var(--premium-gold); text-transform:uppercase; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 20px;">Universal Access To:</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:12px;">
+                        <span style="background:rgba(255,255,255,0.05); border:1px solid #333; padding:10px 16px; border-radius:6px; font-size:0.9rem; color:#ddd;">Netflix Premium</span>
+                        <span style="background:rgba(255,255,255,0.05); border:1px solid #333; padding:10px 16px; border-radius:6px; font-size:0.9rem; color:#ddd;">Disney+</span>
+                        <span style="background:rgba(255,255,255,0.05); border:1px solid #333; padding:10px 16px; border-radius:6px; font-size:0.9rem; color:#ddd;">Sky Sports</span>
+                        <span style="background:rgba(255,255,255,0.05); border:1px solid #333; padding:10px 16px; border-radius:6px; font-size:0.9rem; color:#ddd;">TNT Sports</span>
+                        <span style="background:rgba(255,255,255,0.05); border:1px solid #333; padding:10px 16px; border-radius:6px; font-size:0.9rem; color:#ddd;">GAA GO</span>
+                        <span style="background:rgba(255,255,255,0.05); border:1px solid #333; padding:10px 16px; border-radius:6px; font-size:0.9rem; color:#ddd;">HBO Max</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <div class="ribbon">Best Value</div>
+                <div style="color:var(--irish-green); font-weight:800; letter-spacing:2px; font-size: 0.9rem; margin-bottom:10px;">THE EMERALD PASS</div>
+                <div class="price-large">
+                    <span>€</span>40 <small>/ month</small>
+                </div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check check-icon"></i> All Streaming Platforms Included</li>
+                    <li><i class="fas fa-check check-icon"></i> 5,000+ Live TV Channels</li>
+                    <li><i class="fas fa-check check-icon"></i> All PPV Events (Boxing/UFC)</li>
+                    <li><i class="fas fa-check check-icon"></i> Anti-Buffer Technology</li>
+                    <li><i class="fas fa-check check-icon"></i> 24/7 WhatsApp Support</li>
+                </ul>
+                
+                <a href="mailto:ID.TV.1@proton.me?subject=Emerald%20Pass%20Inquiry&body=Hi%2C%20I%20am%20interested%20in%20setting%20up%20the%20Emerald%20Pass." class="btn-emerald" style="width:100%; justify-content:center;">
+                    <i class="fas fa-envelope"></i> Get Instant Access
+                </a>
+                
+                <p style="text-align:center; color:#666; font-size:0.8rem; margin-top:20px;">
+                    Compatible with Firestick, Android TV, Mobile & PC.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2 style="color: white; font-size: 2.2rem;">Frequently Asked Questions</h2>
+                <p style="color: #888;">Common questions about the service.</p>
+            </div>
+
+            <details>
+                <summary>What devices can I use?</summary>
+                <div class="faq-content">You can use IDTV on almost any device. It works best on Amazon Firestick, Android TV boxes (Nvidia Shield), Smart TVs (LG/Samsung), Smartphones, and Laptops.</div>
+            </details>
+            <details>
+                <summary>Do I need a VPN?</summary>
+                <div class="faq-content">No, our servers are configured to work without a VPN in Ireland and the UK. However, if you already have one, it works perfectly fine with it too.</div>
+            </details>
+            <details>
+                <summary>How long does setup take?</summary>
+                <div class="faq-content">Once you send the email inquiry, we typically respond within 15-30 minutes. The actual setup on your device takes about 5 minutes with our step-by-step guide.</div>
+            </details>
+             <details>
+                <summary>Can I watch GAA and Premier League?</summary>
+                <div class="faq-content">Absolutely. We include all Sky Sports, TNT Sports, Premier Sports, and GAA Go channels as standard.</div>
+            </details>
+        </div>
+    </div>
+
+    <footer style="padding: 40px 5%; text-align: center; color: #444; font-size: 0.8rem; background: #050a06; border-top: 1px solid #111;">
+        <p style="margin-bottom: 10px;">IDTV Éire &copy; 2024</p>
+        <p>All content is aggregated via third-party providers. We do not host content.</p>
+        <div style="margin-top: 20px;">
+            <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+            <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+        </div>
+    </footer>
+
+    <a href="mailto:ID.TV.1@proton.me?subject=General%20Inquiry" class="email-float" title="Contact Us">
+        <i class="fas fa-comment-alt"></i>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slides = document.querySelectorAll('.carousel-slide');
+            let currentSlideIndex = 0;
+            
+            // Preload Images
+            const imageUrls = [
+                'https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+
+            function nextSlide() {
+                slides[currentSlideIndex].classList.remove('active');
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                slides[currentSlideIndex].classList.add('active');
+            }
+            setInterval(nextSlide, 6000); // 6 seconds per slide
+
+            // Navbar Scroll Effect (Shrinks slightly on scroll)
+            const nav = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.style.padding = '10px 5%';
+                    nav.style.background = 'rgba(5, 15, 8, 0.95)';
+                } else {
+                    nav.style.padding = '15px 5%';
+                    nav.style.background = 'rgba(5, 15, 8, 0.85)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
