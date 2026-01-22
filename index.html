@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IDTV Éire | The Ultimate Streaming Suite</title>
     
-    <meta name="description" content="Stop paying multiple bills. Get instant access to Netflix, Sky Sports, Disney+, and GAA GO in one premium dashboard for €40/month.">
-    <meta property="og:title" content="IDTV Éire | Premium Streaming Suite">
-    <meta property="og:description" content="Unlock 5,000+ Channels & VOD. No Contract. Instant Setup.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80">
+    <meta name="description" content="Stop paying multiple bills. Get instant access to Netflix, Sky Sports, Disney+, and more in one premium dashboard for €30/month.">
+    
+    <link rel="icon" type="image/png" href="logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,11 +47,11 @@
 
         h1, h2, h3, h4, .logo-text { font-family: 'Montserrat', sans-serif; }
 
-        /* --- PREMIUM NAVIGATION --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%;
+            padding: 10px 5%;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -63,11 +61,21 @@
         }
 
         .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; text-decoration: none; }
-        .logo-icon { 
-            width: 40px; height: 40px; background: var(--premium-gradient); 
-            border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 1.2rem; color: white;
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: contain;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
         }
+        .logo:hover .logo-img {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+            transform: scale(1.05);
+        }
+
         .logo-text { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; color: white; text-transform: uppercase; }
         .logo-text span { color: var(--irish-green); }
 
@@ -97,46 +105,32 @@
 
         .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: white; z-index: 10002; }
 
-        /* --- HERO SECTION (UPDATED FOR LOWER TEXT) --- */
+        /* --- HERO SECTION --- */
         .hero-container {
             position: relative; height: 100vh; overflow: hidden;
-            display: flex; 
-            /* CHANGE: Align items to flex-end pushes content to bottom */
-            align-items: flex-end; 
-            /* CHANGE: Add padding bottom to lift it slightly off edge */
-            padding-bottom: 80px; 
-            background: #000; 
+            display: flex; align-items: flex-end; padding-bottom: 80px; background: #000; 
         }
 
         .carousel-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
-            
-            /* Start State: Invisible and shifted Left */
             opacity: 0; 
             transform: translateX(-150px) scale(1); 
-            
-            /* Animation Timing */
             transition: opacity 2s ease-in-out, transform 2s ease-out;
             z-index: 1;
         }
         .carousel-slide::after {
             content: ''; position: absolute; inset: 0;
-            /* Gradient overlay darkened at bottom for readability */
             background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 60%, rgba(5,5,5,0.95) 100%);
         }
 
         .carousel-slide.active { 
-            /* Active State: Semi-Transparent Ghost Effect */
-            opacity: 0.5; /* The transparency magic */
-            z-index: 2; 
-            transform: translateX(0) scale(1.05); /* Slide to center */
+            opacity: 0.5; z-index: 2; transform: translateX(0) scale(1.05); 
         }
 
         .hero-content {
             position: relative; z-index: 10; margin-left: 5%;
             max-width: 900px; padding-right: 20px;
-            /* CHANGE: Removed margin-top, added margin-bottom for spacing */
             margin-bottom: 20px;
         }
 
@@ -164,31 +158,18 @@
         }
 
         .dynamic-wrapper {
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            height: 1.1em;
-            vertical-align: bottom;
+            display: inline-block; position: relative; overflow: hidden; height: 1.1em; vertical-align: bottom;
         }
         .dynamic-text {
-            display: block;
-            color: var(--irish-green);
-            transform: translateY(100%);
-            opacity: 0;
+            display: block; color: var(--irish-green); transform: translateY(100%); opacity: 0;
         }
 
         .hero-content p {
-            font-size: 1.3rem; color: #d1d5db; font-weight: 400; line-height: 1.6; margin-bottom: 40px;
-            max-width: 700px;
+            font-size: 1.3rem; color: #d1d5db; font-weight: 400; line-height: 1.6; margin-bottom: 40px; max-width: 700px;
         }
 
         .platform-list-text {
-            font-size: 0.95rem;
-            color: #888;
-            margin-top: 30px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            font-size: 0.95rem; color: #888; margin-top: 30px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
         }
         .platform-list-text span { color: white; font-weight: 700; margin: 0 4px; }
 
@@ -203,8 +184,7 @@
         }
         
         .btn-emerald {
-            background: var(--premium-gradient);
-            color: white; 
+            background: var(--premium-gradient); color: white; 
             box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
         }
         .btn-emerald:hover { 
@@ -214,21 +194,18 @@
         }
 
         .btn-gold {
-            background: var(--premium-gold);
-            color: #000;
+            background: var(--premium-gold); color: #000;
             box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
         }
         .btn-gold:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.4); 
             filter: brightness(1.1);
         }
 
-        .action-buttons {
-            display: flex; gap: 15px; width: 100%;
-        }
+        .action-buttons { display: flex; gap: 15px; width: 100%; }
 
-        /* --- SCROLL SECTIONS --- */
+        /* --- CONTENT SECTIONS --- */
         .content-section { padding: 40px 0 60px 0; background: var(--bg-black); position: relative; z-index: 20; }
         
         .section-header {
@@ -240,9 +217,7 @@
             content: ''; width: 4px; height: 28px; background: var(--irish-green); border-radius: 4px;
         }
 
-        .scroll-wrapper {
-            position: relative;
-        }
+        .scroll-wrapper { position: relative; }
         .scroll-wrapper::after {
             content: ''; position: absolute; top: 0; right: 0; height: 100%; width: 100px;
             background: linear-gradient(to right, transparent, var(--bg-black));
@@ -250,9 +225,7 @@
         }
         .row-scroll {
             display: flex; overflow-x: auto; gap: 20px; padding: 10px 5% 40px 5%;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory;
         }
         .row-scroll::-webkit-scrollbar { display: none; }
 
@@ -261,11 +234,9 @@
             background: #111; border-radius: var(--radius);
             position: relative; overflow: hidden; cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid #222;
-            scroll-snap-align: start;
+            border: 1px solid #222; scroll-snap-align: start;
         }
         .card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
-        
         .card:hover { transform: scale(1.05); border-color: var(--irish-green); box-shadow: 0 15px 35px rgba(0,0,0,0.6); z-index: 50; }
         .card:hover img { opacity: 1; transform: scale(1.1); }
         
@@ -276,7 +247,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* --- PRICING & VALUE --- */
+        /* --- VALUE SECTION --- */
         .value-section { 
             padding: 100px 5%; 
             background: radial-gradient(circle at top right, #0f1f18 0%, var(--bg-darker) 60%); 
@@ -288,69 +259,38 @@
             max-width: 1200px; margin: 0 auto; align-items: center;
         }
 
-        /* --- LOGO GRID STYLES --- */
+        /* --- LOGO GRID --- */
         .logo-grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 15px; margin-top: 30px;
         }
         .logo-card {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            padding: 10px;
+            border-radius: 12px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; position: relative; overflow: hidden; padding: 10px;
         }
         .logo-card:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.3);
-            transform: translateY(-3px);
+            background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); transform: translateY(-3px);
         }
         .logo-card img {
-            max-width: 100%;
-            max-height: 100%;
-            opacity: 0.6;
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
+            max-width: 100%; max-height: 100%; opacity: 0.6; filter: grayscale(100%); transition: all 0.3s ease;
         }
-        .logo-card:hover img {
-            opacity: 1;
-            filter: grayscale(0%);
-        }
+        .logo-card:hover img { opacity: 1; filter: grayscale(0%); }
 
-        /* Text Based Logos */
         .text-logo {
-            font-weight: 800;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            line-height: 1;
-            text-align: center;
-            opacity: 0.7;
-            color: white;
-            transition: 0.3s;
+            font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: -0.5px;
+            line-height: 1; text-align: center; opacity: 0.7; color: white; transition: 0.3s;
         }
         .logo-card:hover .text-logo { opacity: 1; }
-        
-        .gaa-logo { color: #ffffff; }
-        .gaa-logo span { color: #fbbf24; }
         .tnt-logo { color: #ff00e6; font-style: italic; }
         .premier-logo { color: #c00; }
 
         .pricing-card {
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 50px 40px; border-radius: 24px;
-            position: relative; overflow: hidden;
-            transition: 0.4s;
+            background: rgba(255,255,255,0.03); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.08); padding: 50px 40px; border-radius: 24px;
+            position: relative; overflow: hidden; transition: 0.4s;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
         .pricing-card:hover { border-color: var(--irish-green); box-shadow: 0 30px 60px rgba(16, 185, 129, 0.1); }
@@ -373,8 +313,7 @@
 
         .feature-list { list-style: none; padding: 0; margin-bottom: 30px; }
         .feature-list li {
-            margin-bottom: 18px; display: flex; align-items: center;
-            color: #e5e7eb; font-size: 1rem;
+            margin-bottom: 18px; display: flex; align-items: center; color: #e5e7eb; font-size: 1rem;
         }
         .check-icon {
             color: var(--irish-green); margin-right: 15px;
@@ -382,7 +321,6 @@
             width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
         }
 
-        /* --- DOWNLOAD SECTION STYLES --- */
         .download-badge {
             display: inline-flex; align-items: center; gap: 10px;
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
@@ -399,9 +337,7 @@
             margin-bottom: 15px; padding: 20px; transition: all 0.3s;
         }
         details:hover { border-color: #333; }
-        details[open] {
-            border-color: var(--irish-dark); background: rgba(16, 185, 129, 0.03);
-        }
+        details[open] { border-color: var(--irish-dark); background: rgba(16, 185, 129, 0.03); }
         summary {
             font-weight: 600; color: white; cursor: pointer; list-style: none;
             display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;
@@ -409,7 +345,6 @@
         summary::-webkit-details-marker { display: none; }
         summary::after { content: '+'; font-size: 1.5rem; color: var(--premium-gold); font-weight: 300; transition: 0.3s; }
         details[open] summary::after { content: '-'; transform: rotate(180deg); }
-        
         .faq-content { margin-top: 15px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; }
 
         /* --- FOOTER & MODALS --- */
@@ -447,37 +382,27 @@
 
         .form-group { margin-bottom: 15px; }
         .form-input {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: 0.3s;
+            width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px;
+            color: white; font-family: 'Inter', sans-serif; font-size: 1rem; transition: 0.3s;
         }
         .form-input:focus {
-            background: rgba(0, 0, 0, 0.3);
-            border-color: var(--irish-green);
+            background: rgba(0, 0, 0, 0.3); border-color: var(--irish-green);
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
-        .success-msg { color: var(--irish-green); font-weight: bold; }
-        .error-msg { color: #ef4444; font-weight: bold; }
+        .success-msg { color: var(--irish-green); font-weight: bold; display:block; margin-top:10px; }
+        .error-msg { color: #ef4444; font-weight: bold; display:block; margin-top:10px; }
 
-        /* --- CONTACT FLOATING BUTTONS --- */
         .contact-container {
             position: fixed; bottom: 30px; right: 30px;
-            display: flex; flex-direction: column; gap: 15px;
-            z-index: 2000;
+            display: flex; flex-direction: column; gap: 15px; z-index: 2000;
         }
         .float-btn {
             width: 55px; height: 55px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 24px; text-decoration: none;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: white;
-            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: white; cursor: pointer;
         }
         .float-btn:hover { transform: scale(1.15); }
         .btn-whatsapp-float { background: #25D366; }
@@ -493,13 +418,11 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- RESPONSIVENESS --- */
+        /* RESPONSIVE */
         @media screen and (max-width: 900px) {
             .hero-content h1 { font-size: 3rem; }
             .value-grid { grid-template-columns: 1fr; gap: 50px; }
             .pricing-card { padding: 40px 25px; }
-            
-            /* Adjust padding on mobile so text isn't TOO low */
             .hero-container { padding-bottom: 40px; }
             
             .nav-actions {
@@ -518,6 +441,7 @@
         }
         
         @media screen and (max-width: 480px) {
+            .logo-text { display: none; }
             .hero-content h1 { font-size: 2.2rem; }
             .ribbon { top: 15px; right: -30px; padding: 5px 35px; font-size: 0.65rem; }
             .contact-container { bottom: 20px; right: 20px; }
@@ -532,7 +456,7 @@
 
     <nav>
         <a href="#" class="logo">
-            <div class="logo-icon">ID</div>
+            <img src="logo.png" alt="IDTV Logo" class="logo-img">
             <div class="logo-text">IDTV <span>Éire</span></div>
         </a>
         
@@ -552,7 +476,6 @@
         
         <div class="hero-content reveal">
             <div class="premium-tag">Full Access Unlocked</div>
-            
             <h1>
                 Don't Just Watch TV.<br>
                 <span class="text-gradient">Unleash</span> 
@@ -561,16 +484,13 @@
                 </span>
             </h1>
             <p>
-                Stop paying multiple bills. Get instant access to <strong style="color:white;">Netflix, Sky Sports, Disney+, Prime Video, Apple TV+, Paramount+, TNT Sports,</strong> and <strong style="color:white;">GAA GO</strong> all in one powerful dashboard.
+                Stop paying multiple bills. Get instant access to <strong style="color:white;">Netflix, Sky Sports, Disney+, Prime Video, Apple TV+, Paramount+, TNT Sports</strong> all in one powerful dashboard.
             </p>
-            
             <a href="#subscribe" class="btn-base btn-emerald">
                 Get Instant Access <i class="fas fa-bolt"></i>
             </a>
-            
             <div class="platform-list-text">
-                Compatible with: 
-                <span>Firestick</span> &bull; <span>Android TV</span> &bull; <span>Smart TV</span> &bull; <span>Mobile</span>
+                Compatible with: <span>Firestick</span> &bull; <span>Android TV</span> &bull; <span>Smart TV</span> &bull; <span>Mobile</span>
             </div>
         </div>
     </div>
@@ -610,10 +530,6 @@
                     <div class="card-title">Premier League</div>
                 </div>
                 <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?w=500&q=80" alt="GAA">
-                    <div class="card-title">GAA GO Live</div>
-                </div>
-                <div class="card">
                     <img loading="lazy" src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=500&q=80" alt="Rugby">
                     <div class="card-title">Six Nations / URC</div>
                 </div>
@@ -634,12 +550,11 @@
             <div class="reveal">
                 <h2 style="font-size: 3rem; margin-top:0; line-height: 1.1; color: white;">Why Overpay?</h2>
                 <p style="font-size: 1.15rem; color: #9ca3af; line-height: 1.7; margin-bottom: 40px;">
-                    Traditional cable and individual streaming subscriptions can cost over €120/month. 
+                    Traditional cable and individual streaming subscriptions can cost over <strong>€200+/month</strong>. 
                     We combine <strong>every major service</strong> into a single, high-speed interface for a fraction of the price.
                 </p>
                 
                 <h4 style="color: white; margin-bottom: 20px; font-weight: 600;">Included Libraries:</h4>
-                
                 <div class="logo-grid-container">
                     <div class="logo-card" title="Netflix"><img src="https://cdn.simpleicons.org/netflix/E50914" alt="Netflix"></div>
                     <div class="logo-card" title="Prime Video"><img src="https://cdn.simpleicons.org/primevideo/00A8E1" alt="Prime"></div>
@@ -649,13 +564,10 @@
                     <div class="logo-card" title="HBO"><img src="https://cdn.simpleicons.org/hbo/ffffff" alt="HBO"></div>
                     <div class="logo-card" title="Hulu"><img src="https://cdn.simpleicons.org/hulu/1CE783" alt="Hulu"></div>
                     <div class="logo-card" title="Peacock"><img src="https://cdn.simpleicons.org/peacock/ffffff" alt="Peacock"></div>
-                    
                     <div class="logo-card" title="Sky Sports"><img src="https://cdn.simpleicons.org/sky/E6005C" alt="Sky"></div>
                     <div class="logo-card" title="DAZN"><img src="https://cdn.simpleicons.org/dazn/ffffff" alt="DAZN"></div>
                     <div class="logo-card" title="UFC"><img src="https://cdn.simpleicons.org/ufc/D20A0A" alt="UFC"></div>
-                    
                     <div class="logo-card"><div class="text-logo tnt-logo">TNT<br>SPORTS</div></div>
-                    <div class="logo-card"><div class="text-logo gaa-logo">GAA<span>GO</span></div></div>
                     <div class="logo-card"><div class="text-logo premier-logo">PREMIER<br>SPORTS</div></div>
                     <div class="logo-card"><div class="text-logo" style="color:#e10600">F1<br>TV</div></div>
                 </div>
@@ -669,11 +581,7 @@
             <div class="pricing-card reveal">
                 <div class="ribbon">Best Value</div>
                 <div style="color:var(--irish-green); font-weight:800; letter-spacing:2px; font-size: 0.85rem; text-transform:uppercase;">The Emerald Pass</div>
-                
-                <div class="price-display">
-                    <span>€</span>40 <small>/ month</small>
-                </div>
-                
+                <div class="price-display"><span>€</span>30 <small>/ month</small></div>
                 <ul class="feature-list">
                     <li><i class="fas fa-check check-icon"></i> All Streaming Platforms</li>
                     <li><i class="fas fa-check check-icon"></i> 5,000+ Live Channels</li>
@@ -681,7 +589,6 @@
                     <li><i class="fas fa-check check-icon"></i> Anti-Buffer Tech</li>
                     <li><i class="fas fa-check check-icon"></i> WhatsApp Support</li>
                 </ul>
-                
                 <div class="action-buttons">
                     <a href="https://wa.me/353800000000?text=I'm%20interested%20in%20the%20Emerald%20Pass" target="_blank" class="btn-base btn-emerald">
                         <i class="fab fa-whatsapp"></i> WhatsApp
@@ -690,10 +597,7 @@
                         <i class="fas fa-envelope"></i> Email Us
                     </button>
                 </div>
-                
-                <p style="text-align:center; color:#555; font-size:0.8rem; margin-top:20px;">
-                    No Contract. Cancel Anytime.
-                </p>
+                <p style="text-align:center; color:#555; font-size:0.8rem; margin-top:20px;">No Contract. Cancel Anytime.</p>
             </div>
         </div>
     </div>
@@ -704,11 +608,9 @@
             <p style="color: #9ca3af; font-size: 1.1rem; margin-bottom: 35px;">
                 Download the player to get started. Our system auto-detects your device for the best version.
             </p>
-            
             <button onclick="smartDownload()" class="btn-base btn-emerald" style="width: auto; padding: 20px 50px; font-size: 1.1rem; box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);">
                 <i class="fas fa-download"></i> <span id="smart-dl-text">Download Player</span>
             </button>
-            
             <br>
             <div class="download-badge reveal" id="os-badge" style="display:none;">
                 <i class="fas fa-mobile-alt"></i> <span id="os-name">Detecting Device...</span>
@@ -722,7 +624,6 @@
                 <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Common Questions</h2>
                 <p style="color: #666;">Everything you need to know to get started.</p>
             </div>
-            
             <details>
                 <summary>What devices can I use?</summary>
                 <div class="faq-content">IDTV works flawlessly on Amazon Firestick, Android TV boxes (Nvidia Shield), Smart TVs (LG/Samsung), iPhones, Android phones, and Laptops.</div>
@@ -737,12 +638,13 @@
             </details> 
             <details>
                 <summary>Is Live Sport included?</summary>
-                <div class="faq-content">Yes. The subscription includes all Sky Sports, TNT Sports, Premier Sports, and GAA Go channels as standard.</div>
+                <div class="faq-content">Yes. The subscription includes all Sky Sports, TNT Sports, Premier Sports channels as standard.</div>
             </details>
         </div>
     </div>
 
     <footer>
+        <img src="logo.png" alt="IDTV" style="height: 60px; margin-bottom: 20px; border-radius: 12px; opacity: 0.8;">
         <p>IDTV Éire &copy; 2024</p>
         <div class="footer-links">
             <a onclick="openModal('privacy')">Privacy Policy</a>
@@ -773,10 +675,10 @@
     <div id="contactModal" class="modal-overlay">
         <div class="modal-content contact-modal-size">
             <span class="modal-close" onclick="closeContactModal()">&times;</span>
-            
             <h2 style="color: white; margin-top: 0;">Get Connected</h2>
             <p style="color: #9ca3af; margin-bottom: 25px;">Fill out the form below or use WhatsApp for faster response.</p>
-            <form id="ajax-contact-form">
+            
+            <form id="ajax-contact-form" action="send_mail.php" method="POST">
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Your Name" required class="form-input">
                 </div>
@@ -800,31 +702,23 @@
     </div>
 
     <script>
-        // --- TEXT ROTATOR ---
-        const platforms = ["Sky Sports", "Netflix", "Disney+", "GAA GO", "Prime Video", "TNT Sports", "Apple TV+"];
+        // --- ANIMATIONS & INTERACTIVITY ---
+        const platforms = ["Sky Sports", "Netflix", "Disney+", "Prime Video", "TNT Sports", "Apple TV+"];
         let wordIndex = 0;
         const dynamicText = document.getElementById("dynamic-platform");
         
-        // Initial state set
         dynamicText.style.opacity = '1';
         dynamicText.style.transform = 'translateY(0)';
 
         setInterval(() => {
-            // 1. Slide Out
             dynamicText.style.transition = 'all 0.4s ease-in';
             dynamicText.style.transform = 'translateY(-100%)';
             dynamicText.style.opacity = '0';
-            
             setTimeout(() => {
-                // 2. Change Text (hidden)
                 wordIndex = (wordIndex + 1) % platforms.length;
                 dynamicText.innerText = platforms[wordIndex];
-                
-                // 3. Reset Position (instant, hidden)
                 dynamicText.style.transition = 'none';
                 dynamicText.style.transform = 'translateY(100%)';
-                
-                // 4. Slide In (next frame)
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
                         dynamicText.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
@@ -835,10 +729,9 @@
             }, 400); 
         }, 3000); 
 
-        // --- SLIDESHOW (Fade Left + Ghost Effect) ---
+        // Slideshow
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.carousel-slide');
-        
         function nextSlide() {
             slides[currentSlideIndex].classList.remove('active');
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
@@ -846,7 +739,7 @@
         }
         setInterval(nextSlide, 5000);
 
-        // --- SCROLL REVEAL ---
+        // Scroll Reveal
         window.addEventListener('scroll', reveal);
         function reveal(){
             var reveals = document.querySelectorAll('.reveal');
@@ -861,7 +754,7 @@
         }
         reveal();
 
-        // --- MOBILE MENU ---
+        // Mobile Menu
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
             const icon = document.querySelector('.mobile-toggle i');
@@ -876,31 +769,32 @@
             }
         }
 
-        // --- SMART DOWNLOAD LOGIC ---
+        // Auto-close menu when link clicked
+        const navLinks = document.querySelectorAll('.nav-actions a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('navMenu');
+                if(menu.classList.contains('active')) toggleMenu();
+            });
+        });
+
+        // Smart Download
         function smartDownload() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            
-            // 1. iOS (Web Player is best for iPhone/iPad)
             if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.location.href = "https://web.strem.io/";
                 return;
             }
-
-            // 2. Android (Google Play)
             if (/android/i.test(userAgent)) {
                 window.location.href = "https://play.google.com/store/apps/details?id=com.stremio.one";
                 return;
             }
-
-            // 3. PC/Mac (Official Downloads)
             window.location.href = "https://www.stremio.com/downloads";
         }
 
-        // --- DETECT OS ON LOAD ---
         document.addEventListener('DOMContentLoaded', function() {
             var osName = "";
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            
             if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) osName = "iOS (Web Player)";
             else if (/android/i.test(userAgent)) osName = "Android / Firestick";
             else if (/windows/i.test(userAgent)) osName = "Windows";
@@ -914,19 +808,12 @@
             }
         });
 
-        // --- LEGAL MODALS ---
+        // Modals
         const modal = document.getElementById('legalModal');
         const modalText = document.getElementById('modalText');
         const content = {
-            terms: `<h2 style="margin-top:0; border-bottom:1px solid #333; padding-bottom:15px;">Terms of Service</h2>
-                    <p><strong>1. Acceptance of Terms:</strong> By accessing and using IDTV Éire, you accept and agree to be bound by the terms and provision of this agreement.</p>
-                    <p><strong>2. Service Delivery:</strong> Digital credentials will be delivered via email/WhatsApp. Due to the nature of digital goods, refunds are processed at our discretion if service cannot be provided.</p>
-                    <p><strong>3. Content Disclaimer:</strong> IDTV Éire does not host, provide, or store any media files. We act solely as a technical aggregator of publicly available third-party streams.</p>`,
-            
-            privacy: `<h2 style="margin-top:0; border-bottom:1px solid #333; padding-bottom:15px;">Privacy Policy</h2>
-                    <p><strong>1. Data Collection:</strong> We do not store credit card details. We only collect the email address/number used for correspondence.</p>
-                    <p><strong>2. No Logs Policy:</strong> We do not monitor or log your viewing activity. Your streaming habits remain private.</p>
-                    <p><strong>3. Security:</strong> We use encrypted email providers (ProtonMail) and End-to-End encrypted messaging (WhatsApp).</p>`
+            terms: `<h2 style="margin-top:0; border-bottom:1px solid #333; padding-bottom:15px;">Terms of Service</h2><p><strong>1. Acceptance of Terms:</strong> By accessing and using IDTV Éire, you accept and agree to be bound by the terms and provision of this agreement.</p><p><strong>2. Service Delivery:</strong> Digital credentials will be delivered via email/WhatsApp. Due to the nature of digital goods, refunds are processed at our discretion if service cannot be provided.</p><p><strong>3. Content Disclaimer:</strong> IDTV Éire does not host, provide, or store any media files. We act solely as a technical aggregator of publicly available third-party streams.</p>`,
+            privacy: `<h2 style="margin-top:0; border-bottom:1px solid #333; padding-bottom:15px;">Privacy Policy</h2><p><strong>1. Data Collection:</strong> We do not store credit card details. We only collect the email address/number used for correspondence.</p><p><strong>2. No Logs Policy:</strong> We do not monitor or log your viewing activity. Your streaming habits remain private.</p><p><strong>3. Security:</strong> We use encrypted email providers (ProtonMail) and End-to-End encrypted messaging (WhatsApp).</p>`
         };
 
         function openModal(type) {
@@ -937,19 +824,13 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal(e) {
-            if (e.target === modal) closeModalBtn();
-        }
-
+        function closeModal(e) { if (e.target === modal) closeModalBtn(); }
         function closeModalBtn() {
             modal.classList.remove('show');
-            setTimeout(() => {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }, 300);
+            setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 300);
         }
 
-        // --- CONTACT MODAL ---
+        // Contact Form
         const contactModal = document.getElementById('contactModal');
         const contactForm = document.getElementById('ajax-contact-form');
         const formResponse = document.getElementById('form-response');
@@ -963,32 +844,36 @@
 
         function closeContactModal() {
             contactModal.classList.remove('show');
-            setTimeout(() => {
-                contactModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                formResponse.innerHTML = ''; 
-            }, 300);
+            setTimeout(() => { contactModal.style.display = 'none'; document.body.style.overflow = 'auto'; formResponse.innerHTML = ''; }, 300);
         }
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const originalText = btnText.innerText;
-            btnText.innerText = "Sending...";
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             formResponse.innerHTML = '';
             
-            // NOTE: You need a backend script (send_mail.php) for this to actually send email.
-            // Simulating success for demo purposes:
-            setTimeout(() => {
-                 formResponse.innerHTML = `<span class="success-msg"><i class="fas fa-check-circle"></i> Message Sent! We'll be in touch.</span>`;
-                 contactForm.reset();
-                 btnText.innerText = originalText;
-                 setTimeout(closeContactModal, 3000);
-            }, 1500);
+            const formData = new FormData(this);
+            fetch(this.action, { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    formResponse.innerHTML = `<span class="success-msg"><i class="fas fa-check-circle"></i> ${data.message}</span>`;
+                    contactForm.reset();
+                    btnText.innerText = "Sent!";
+                    setTimeout(() => { btnText.innerText = originalText; closeContactModal(); }, 3000);
+                } else {
+                    throw new Error(data.message || 'Submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                formResponse.innerHTML = `<span class="error-msg"><i class="fas fa-exclamation-triangle"></i> ${error.message || "Server Error. Try WhatsApp."}</span>`;
+                btnText.innerText = originalText;
+            });
         });
 
-        window.addEventListener('click', (e) => {
-            if (e.target === contactModal) closeContactModal();
-        });
+        window.addEventListener('click', (e) => { if (e.target === contactModal) closeContactModal(); });
     </script>
 </body>
 </html>
