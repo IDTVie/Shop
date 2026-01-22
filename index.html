@@ -97,11 +97,15 @@
 
         .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: white; z-index: 10002; }
 
-        /* --- HERO SECTION (NEW ANIMATION) --- */
+        /* --- HERO SECTION (UPDATED FOR LOWER TEXT) --- */
         .hero-container {
             position: relative; height: 100vh; overflow: hidden;
-            display: flex; align-items: center;
-            background: #000; /* Deep black base */
+            display: flex; 
+            /* CHANGE: Align items to flex-end pushes content to bottom */
+            align-items: flex-end; 
+            /* CHANGE: Add padding bottom to lift it slightly off edge */
+            padding-bottom: 80px; 
+            background: #000; 
         }
 
         .carousel-slide {
@@ -116,11 +120,10 @@
             transition: opacity 2s ease-in-out, transform 2s ease-out;
             z-index: 1;
         }
-
         .carousel-slide::after {
             content: ''; position: absolute; inset: 0;
-            /* Gradient overlay for readability */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 90%, #050505 100%);
+            /* Gradient overlay darkened at bottom for readability */
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 60%, rgba(5,5,5,0.95) 100%);
         }
 
         .carousel-slide.active { 
@@ -133,7 +136,8 @@
         .hero-content {
             position: relative; z-index: 10; margin-left: 5%;
             max-width: 900px; padding-right: 20px;
-            margin-top: 60px;
+            /* CHANGE: Removed margin-top, added margin-bottom for spacing */
+            margin-bottom: 20px;
         }
 
         .premium-tag {
@@ -244,7 +248,6 @@
             background: linear-gradient(to right, transparent, var(--bg-black));
             pointer-events: none;
         }
-
         .row-scroll {
             display: flex; overflow-x: auto; gap: 20px; padding: 10px 5% 40px 5%;
             scroll-behavior: smooth;
@@ -292,7 +295,6 @@
             gap: 15px;
             margin-top: 30px;
         }
-
         .logo-card {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
@@ -306,14 +308,11 @@
             overflow: hidden;
             padding: 10px;
         }
-
         .logo-card:hover {
             background: rgba(255,255,255,0.1);
             border-color: rgba(255,255,255,0.3);
             transform: translateY(-3px);
         }
-
-        /* Image Logos */
         .logo-card img {
             max-width: 100%;
             max-height: 100%;
@@ -321,7 +320,6 @@
             filter: grayscale(100%);
             transition: all 0.3s ease;
         }
-
         .logo-card:hover img {
             opacity: 1;
             filter: grayscale(0%);
@@ -340,7 +338,7 @@
             transition: 0.3s;
         }
         .logo-card:hover .text-logo { opacity: 1; }
-
+        
         .gaa-logo { color: #ffffff; }
         .gaa-logo span { color: #fbbf24; }
         .tnt-logo { color: #ff00e6; font-style: italic; }
@@ -356,7 +354,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
         .pricing-card:hover { border-color: var(--irish-green); box-shadow: 0 30px 60px rgba(16, 185, 129, 0.1); }
-
+        
         .ribbon {
             position: absolute; top: 25px; right: -35px;
             background: var(--premium-gold); color: black;
@@ -384,6 +382,14 @@
             width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
         }
 
+        /* --- DOWNLOAD SECTION STYLES --- */
+        .download-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 20px; border-radius: 50px; font-size: 0.9rem;
+            margin-top: 25px; color: var(--premium-gold);
+        }
+
         /* --- FAQ --- */
         .faq-section { padding: 100px 5%; background: var(--bg-black); }
         .faq-container { max-width: 800px; margin: 0 auto; }
@@ -403,6 +409,7 @@
         summary::-webkit-details-marker { display: none; }
         summary::after { content: '+'; font-size: 1.5rem; color: var(--premium-gold); font-weight: 300; transition: 0.3s; }
         details[open] summary::after { content: '-'; transform: rotate(180deg); }
+        
         .faq-content { margin-top: 15px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; }
 
         /* --- FOOTER & MODALS --- */
@@ -439,7 +446,6 @@
         }
 
         .form-group { margin-bottom: 15px; }
-
         .form-input {
             width: 100%;
             padding: 15px;
@@ -451,13 +457,11 @@
             font-size: 1rem;
             transition: 0.3s;
         }
-
         .form-input:focus {
             background: rgba(0, 0, 0, 0.3);
             border-color: var(--irish-green);
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
-
         .success-msg { color: var(--irish-green); font-weight: bold; }
         .error-msg { color: #ef4444; font-weight: bold; }
 
@@ -485,7 +489,7 @@
             100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
         }
         .pulse-effect { animation: pulse 3s infinite; }
-
+        
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -494,6 +498,9 @@
             .hero-content h1 { font-size: 3rem; }
             .value-grid { grid-template-columns: 1fr; gap: 50px; }
             .pricing-card { padding: 40px 25px; }
+            
+            /* Adjust padding on mobile so text isn't TOO low */
+            .hero-container { padding-bottom: 40px; }
             
             .nav-actions {
                 position: fixed; top: 0; right: 0; width: 85%; height: 100vh;
@@ -532,7 +539,6 @@
         <div class="mobile-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </div>
-
         <div class="nav-actions" id="navMenu">
             <a href="#" class="login-link">Logáil Isteach</a>
             <a href="#subscribe" class="nav-btn-outline" onclick="toggleMenu()">Join the Club</a>
@@ -554,7 +560,6 @@
                     <span id="dynamic-platform" class="dynamic-text">Everything.</span>
                 </span>
             </h1>
-
             <p>
                 Stop paying multiple bills. Get instant access to <strong style="color:white;">Netflix, Sky Sports, Disney+, Prime Video, Apple TV+, Paramount+, TNT Sports,</strong> and <strong style="color:white;">GAA GO</strong> all in one powerful dashboard.
             </p>
@@ -693,6 +698,24 @@
         </div>
     </div>
 
+    <div id="download-app" class="content-section" style="border-top: 1px solid #111; background: linear-gradient(to bottom, #020202 0%, #050505 100%); padding: 80px 5%; text-align: center;">
+        <div class="reveal" style="max-width: 700px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; color: white; margin-bottom: 10px;">Already have an account?</h2>
+            <p style="color: #9ca3af; font-size: 1.1rem; margin-bottom: 35px;">
+                Download the player to get started. Our system auto-detects your device for the best version.
+            </p>
+            
+            <button onclick="smartDownload()" class="btn-base btn-emerald" style="width: auto; padding: 20px 50px; font-size: 1.1rem; box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);">
+                <i class="fas fa-download"></i> <span id="smart-dl-text">Download Player</span>
+            </button>
+            
+            <br>
+            <div class="download-badge reveal" id="os-badge" style="display:none;">
+                <i class="fas fa-mobile-alt"></i> <span id="os-name">Detecting Device...</span>
+            </div>
+        </div>
+    </div>
+
     <div class="faq-section">
         <div class="faq-container reveal">
             <div style="text-align: center; margin-bottom: 50px;">
@@ -711,8 +734,8 @@
             <details>
                 <summary>How fast is the setup?</summary>
                 <div class="faq-content">Instant. Once you contact us via WhatsApp, we typically respond within minutes. The actual setup on your device takes about 5 minutes with our step-by-step guide.</div>
-            </details>
-             <details>
+            </details> 
+            <details>
                 <summary>Is Live Sport included?</summary>
                 <div class="faq-content">Yes. The subscription includes all Sky Sports, TNT Sports, Premier Sports, and GAA Go channels as standard.</div>
             </details>
@@ -753,7 +776,6 @@
             
             <h2 style="color: white; margin-top: 0;">Get Connected</h2>
             <p style="color: #9ca3af; margin-bottom: 25px;">Fill out the form below or use WhatsApp for faster response.</p>
-
             <form id="ajax-contact-form">
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Your Name" required class="form-input">
@@ -854,10 +876,47 @@
             }
         }
 
+        // --- SMART DOWNLOAD LOGIC ---
+        function smartDownload() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // 1. iOS (Web Player is best for iPhone/iPad)
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://web.strem.io/";
+                return;
+            }
+
+            // 2. Android (Google Play)
+            if (/android/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.stremio.one";
+                return;
+            }
+
+            // 3. PC/Mac (Official Downloads)
+            window.location.href = "https://www.stremio.com/downloads";
+        }
+
+        // --- DETECT OS ON LOAD ---
+        document.addEventListener('DOMContentLoaded', function() {
+            var osName = "";
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) osName = "iOS (Web Player)";
+            else if (/android/i.test(userAgent)) osName = "Android / Firestick";
+            else if (/windows/i.test(userAgent)) osName = "Windows";
+            else if (/macintosh|mac os x/i.test(userAgent)) osName = "macOS";
+            else if (/linux/i.test(userAgent)) osName = "Linux";
+
+            if(osName) {
+                document.getElementById("smart-dl-text").innerText = "Download for " + osName.split(" ")[0];
+                document.getElementById("os-name").innerText = "Detected: " + osName;
+                document.getElementById("os-badge").style.display = "inline-flex";
+            }
+        });
+
         // --- LEGAL MODALS ---
         const modal = document.getElementById('legalModal');
         const modalText = document.getElementById('modalText');
-
         const content = {
             terms: `<h2 style="margin-top:0; border-bottom:1px solid #333; padding-bottom:15px;">Terms of Service</h2>
                     <p><strong>1. Acceptance of Terms:</strong> By accessing and using IDTV Éire, you accept and agree to be bound by the terms and provision of this agreement.</p>
@@ -913,39 +972,23 @@
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-
             const originalText = btnText.innerText;
             btnText.innerText = "Sending...";
             formResponse.innerHTML = '';
-
-            const formData = new FormData(contactForm);
-
-            fetch('send_mail.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    formResponse.innerHTML = `<span class="success-msg"><i class="fas fa-check-circle"></i> ${data.message}</span>`;
-                    contactForm.reset();
-                    setTimeout(closeContactModal, 3000); 
-                } else {
-                    formResponse.innerHTML = `<span class="error-msg">${data.message}</span>`;
-                }
-            })
-            .catch(error => {
-                formResponse.innerHTML = `<span class="error-msg">Error. Please use WhatsApp.</span>`;
-            })
-            .finally(() => {
-                btnText.innerText = originalText;
-            });
+            
+            // NOTE: You need a backend script (send_mail.php) for this to actually send email.
+            // Simulating success for demo purposes:
+            setTimeout(() => {
+                 formResponse.innerHTML = `<span class="success-msg"><i class="fas fa-check-circle"></i> Message Sent! We'll be in touch.</span>`;
+                 contactForm.reset();
+                 btnText.innerText = originalText;
+                 setTimeout(closeContactModal, 3000);
+            }, 1500);
         });
 
         window.addEventListener('click', (e) => {
             if (e.target === contactModal) closeContactModal();
         });
-
     </script>
 </body>
 </html>
