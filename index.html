@@ -6,14 +6,20 @@
     <title>IDTV Éire | The Ultimate Streaming Suite</title>
     
     <meta name="description" content="Stop paying multiple bills. Get instant access to Netflix, Sky Sports, Disney+, and more in one premium dashboard for €30/month.">
-    
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/777/777242.png">
 
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IDTV Éire | All-in-One Streaming">
+    <meta property="og:description" content="Unlock Netflix, Sky Sports, Disney+, and 5000+ channels for just €30/month. No contracts.">
+    <meta property="og:url" content="https://YOUR-WEBSITE-DOMAIN.com"> 
+    <meta property="og:image" content="https://YOUR-WEBSITE-DOMAIN.com/social-preview.jpg">
+    <meta property="og:site_name" content="IDTV Éire">
+
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/777/777242.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
         :root {
             --bg-black: #050505;
@@ -34,7 +40,12 @@
         }
 
         * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
-        html { scroll-behavior: smooth; }
+        
+        /* SCALING ADJUSTMENT: Makes all text smaller globally */
+        html { 
+            scroll-behavior: smooth; 
+            font-size: 14px; /* Reduced from browser default of 16px */
+        }
         
         body {
             margin: 0;
@@ -49,18 +60,9 @@
 
         /* --- NAVIGATION ANIMATIONS --- */
         @keyframes navPulse {
-            0% {
-                border-bottom-color: rgba(255, 255, 255, 0.08);
-                box-shadow: 0 5px 20px rgba(0,0,0,0);
-            }
-            50% {
-                border-bottom-color: rgba(16, 185, 129, 0.6);
-                box-shadow: 0 5px 30px rgba(16, 185, 129, 0.15);
-            }
-            100% {
-                border-bottom-color: rgba(255, 255, 255, 0.08);
-                box-shadow: 0 5px 20px rgba(0,0,0,0);
-            }
+            0% { border-bottom-color: rgba(255, 255, 255, 0.08); box-shadow: 0 5px 20px rgba(0,0,0,0); }
+            50% { border-bottom-color: rgba(16, 185, 129, 0.6); box-shadow: 0 5px 30px rgba(16, 185, 129, 0.15); }
+            100% { border-bottom-color: rgba(255, 255, 255, 0.08); box-shadow: 0 5px 20px rgba(0,0,0,0); }
         }
 
         nav {
@@ -70,11 +72,9 @@
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid transparent; /* Set transparent for animation */
+            border-bottom: 1px solid transparent; 
             z-index: 1000;
             transition: all 0.4s ease;
-            
-            /* APPLYING THE PULSE ANIMATION */
             animation: navPulse 4s infinite ease-in-out;
         }
 
@@ -87,10 +87,9 @@
         }
 
         .logo-icon {
-            font-size: 2rem;
+            font-size: 1.8rem; /* Slightly smaller */
             color: var(--irish-green);
             transition: 0.3s;
-            /* Logo Pulse Animation */
             animation: iconHeartbeat 3s infinite ease-in-out;
         }
 
@@ -100,68 +99,48 @@
         }
 
         .logo-text {
-            font-weight: 900;
-            font-size: 1.25rem;
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-            
-            /* Gradient Text for Shimmer Effect */
+            font-weight: 900; font-size: 1.1rem; /* Slightly smaller */
+            letter-spacing: -0.5px; text-transform: uppercase;
             background: linear-gradient(90deg, #fff 0%, #fff 40%, #10B981 50%, #fff 60%, #fff 100%);
             background-size: 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            
-            /* Apply Shimmer Animation */
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: textShimmer 6s linear infinite;
         }
         
         .logo-text span {
-            color: var(--irish-green); /* Fallback */
-            -webkit-text-fill-color: var(--irish-green); /* Ensures 'Eire' stays green */
+            color: var(--irish-green); -webkit-text-fill-color: var(--irish-green); 
         }
 
-        .nav-actions { 
-            display: flex; align-items: center; gap: 30px; 
-            z-index: 9999;
-        }
-        
-        .login-link { 
-            color: #d1d5db; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: 0.3s; 
-        }
+        .nav-actions { display: flex; align-items: center; gap: 25px; z-index: 9999; }
+        .login-link { color: #d1d5db; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
         .login-link:hover { color: var(--premium-gold); text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
 
         .nav-btn-outline {
-            background: rgba(255,255,255,0.03); 
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white; padding: 10px 24px; border-radius: 50px;
-            font-size: 0.85rem; text-decoration: none; transition: 0.3s;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.2);
+            color: white; padding: 8px 20px; border-radius: 50px;
+            font-size: 0.8rem; text-decoration: none; transition: 0.3s;
             text-transform: uppercase; letter-spacing: 1px; font-weight: 700;
         }
+        
         .nav-btn-outline:hover {
-            border-color: var(--irish-green);
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--irish-green);
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-            transform: scale(1.05);
+            border-color: var(--irish-green); background: rgba(16, 185, 129, 0.1);
+            color: var(--irish-green); box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); transform: scale(1.05);
         }
 
-        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: white; z-index: 10002; }
+        .mobile-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: white; z-index: 10002; }
 
         /* --- HERO SECTION --- */
         .hero-container {
             position: relative; height: 100vh; overflow: hidden;
-            display: flex; align-items: flex-end; padding-bottom: 80px; background: #000; 
+            display: flex; align-items: flex-end; padding-bottom: 70px; background: #000; 
         }
 
         .carousel-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center top; 
-            opacity: 0; 
-            transform: translateX(-150px) scale(1); 
+            opacity: 0; transform: translateY(-150px); 
             transition: opacity 2s ease-in-out, transform 2s ease-out;
-            z-index: 1;
-            /* Darkens the image source significantly for text readability */
-            filter: brightness(0.5) contrast(1.1); 
+            z-index: 1; filter: brightness(0.8) contrast(1.1); 
         }
         
         .carousel-slide::after {
@@ -171,80 +150,100 @@
                 linear-gradient(to bottom, transparent 50%, #050505 100%);
         }
 
-        .carousel-slide.active { 
-            opacity: 0.5; 
-            z-index: 2; 
-            transform: translateX(0) scale(1.05); 
-        }
+        .carousel-slide.active { opacity: 0.5; z-index: 2; transform: translateY(0); }
 
         .hero-content {
             position: relative; z-index: 10; margin-left: 5%;
             max-width: 900px; padding-right: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .premium-tag {
             display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(251, 191, 36, 0.1);
-            color: var(--premium-gold);
+            background: rgba(251, 191, 36, 0.1); color: var(--premium-gold);
             border: 1px solid rgba(251, 191, 36, 0.3);
-            padding: 8px 16px; font-size: 0.75rem; font-weight: 800;
+            padding: 6px 14px; font-size: 0.7rem; font-weight: 800;
             letter-spacing: 2px; text-transform: uppercase;
-            margin-bottom: 25px; border-radius: 50px;
-            backdrop-filter: blur(4px);
-            animation: float 4s ease-in-out infinite;
+            margin-bottom: 20px; border-radius: 50px;
+            backdrop-filter: blur(4px); animation: float 4s ease-in-out infinite;
         }
         
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); }
         }
 
         .hero-content h1 {
-            font-size: 4.8rem; line-height: 1.05; font-weight: 900; margin: 0 0 25px 0;
+            font-size: 3.5rem; /* Reduced from 4.5rem */
+            line-height: 1.05; font-weight: 900; margin: 0 0 20px 0;
             letter-spacing: -2px; color: white;
             text-shadow: 0 10px 40px rgba(0,0,0,0.8);
-        }
-        
-        .rotating-logo {
-            height: 1.1em;
-            width: auto;
-            vertical-align: middle;
-            object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
-            margin-bottom: 15px; 
         }
 
         .text-gradient {
             background: var(--text-gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .dynamic-wrapper {
-            display: inline-block; position: relative; overflow: hidden; height: 1.3em; vertical-align: bottom;
+        /* --- MARQUEE REEL (OFFICIAL LOGOS) --- */
+        .marquee-container {
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 25px;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
-        .dynamic-text {
-            display: block; color: var(--irish-green); transform: translateY(100%); opacity: 0;
+
+        .marquee-content {
+            display: flex; gap: 60px; width: max-content;
+            animation: marqueeScroll 60s linear infinite; align-items: center;
+        }
+
+        .marquee-content:hover { animation-play-state: paused; }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
+        .reel-logo {
+            height: 30px; /* Reduced from 35px */
+            width: auto; max-width: 110px;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.1)); 
+            opacity: 0.9; transition: all 0.3s ease; border-radius: 8px; 
+        }
+
+        .reel-logo:hover {
+            opacity: 1; transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        }
+
+        .inline-brand-logo {
+            height: 1.3em; width: auto; vertical-align: middle;
+            margin: 0 4px; display: inline-block;
+            filter: drop-shadow(0 0 2px rgba(255,255,255,0.2));
+            transform: translateY(-2px); opacity: 0.95; border-radius: 4px;
         }
 
         .hero-content p {
-            font-size: 1.3rem; color: #d1d5db; font-weight: 400; line-height: 1.6; margin-bottom: 40px; max-width: 700px;
+            font-size: 1.1rem; /* Reduced from 1.3rem */
+            color: #d1d5db; font-weight: 400; line-height: 1.7; 
+            margin-bottom: 35px; max-width: 750px;
         }
 
         .platform-list-text {
-            font-size: 0.95rem; color: #888; margin-top: 30px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
+            font-size: 0.85rem; color: #888; margin-top: 25px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
         }
         .platform-list-text span { color: white; font-weight: 700; margin: 0 4px; }
 
         /* --- BUTTONS --- */
         .btn-base {
-            padding: 18px 36px; font-size: 1rem; font-weight: 800;
+            padding: 16px 32px; font-size: 0.95rem; font-weight: 800;
             border: none; border-radius: 8px; cursor: pointer;
             text-transform: uppercase; letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            transition: all 0.3s ease; text-decoration: none; 
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
             position: relative; overflow: hidden;
         }
         
@@ -253,9 +252,7 @@
             box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
         }
         .btn-emerald:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.6); /* Enhanced Glow */
-            filter: brightness(1.1);
+            transform: translateY(-3px); box-shadow: 0 0 30px rgba(16, 185, 129, 0.6); filter: brightness(1.1);
         }
 
         .btn-gold {
@@ -263,208 +260,143 @@
             box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
         }
         .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.6); /* Enhanced Glow */
-            filter: brightness(1.1);
+            transform: translateY(-3px); box-shadow: 0 0 30px rgba(251, 191, 36, 0.6); filter: brightness(1.1);
         }
 
         .action-buttons { display: flex; gap: 15px; width: 100%; }
 
-        /* --- CONTENT SECTIONS & SCROLLING --- */
+        /* --- CONTENT SECTIONS --- */
         .content-section { padding: 40px 0 60px 0; background: var(--bg-black); position: relative; z-index: 20; }
         
         .section-header {
-            padding-left: 5%;
-            font-size: 1.5rem; color: #fff; margin-bottom: 25px;
+            padding-left: 5%; font-size: 1.3rem; color: #fff; margin-bottom: 20px;
             font-weight: 700; display: flex; align-items: center; gap: 15px;
         }
-        .section-header::before {
-            content: ''; width: 4px; height: 28px; background: var(--irish-green); border-radius: 4px;
-        }
+        .section-header::before { content: ''; width: 4px; height: 24px; background: var(--irish-green); border-radius: 4px; }
 
         .scroll-wrapper { position: relative; }
-        
-        .scroll-wrapper::after {
-            content: ''; position: absolute; top: 0; right: 0; height: 100%; width: 80px;
-            background: linear-gradient(to right, transparent, var(--bg-black));
-            pointer-events: none; z-index: 5;
-        }
-        .scroll-wrapper::before {
-            content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 80px;
-            background: linear-gradient(to left, transparent, var(--bg-black));
-            pointer-events: none; z-index: 5;
-        }
+        .scroll-wrapper::after { content: ''; position: absolute; top: 0; right: 0; height: 100%; width: 80px; background: linear-gradient(to right, transparent, var(--bg-black)); pointer-events: none; z-index: 5; }
+        .scroll-wrapper::before { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 80px; background: linear-gradient(to left, transparent, var(--bg-black)); pointer-events: none; z-index: 5; }
 
-        .row-scroll {
-            display: flex; 
-            gap: 20px; 
-            padding: 10px 0 40px 0;
-            overflow-x: hidden; 
-            white-space: nowrap;
-        }
+        .row-scroll { display: flex; gap: 15px; padding: 10px 0 30px 0; overflow-x: hidden; white-space: nowrap; }
 
         .card {
-            min-width: 280px; height: 160px;
-            background: #111; border-radius: var(--radius);
+            min-width: 240px; height: 140px; background: #111; border-radius: var(--radius);
             position: relative; overflow: hidden; cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid #222; 
-            flex: 0 0 auto; 
+            border: 1px solid #222; flex: 0 0 auto; 
         }
+
         .card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
         .card:hover { transform: scale(1.05); border-color: var(--irish-green); box-shadow: 0 15px 35px rgba(0,0,0,0.6); z-index: 50; }
         .card:hover img { opacity: 1; transform: scale(1.1); }
         
         .card-title {
             position: absolute; bottom: 0; left: 0; width: 100%;
-            padding: 15px; background: linear-gradient(to top, black, transparent);
-            font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-            z-index: 10; /* Ensures title sits ABOVE the film grain */
+            padding: 12px; background: linear-gradient(to top, black, transparent);
+            font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8); z-index: 10; 
         }
 
-        /* --- FILM GRAIN & VIGNETTE OVERLAY --- */
-        /* Applies to ALL cards in content sections (Movies AND Sports) */
-        
-        .content-section .card img {
-            /* Desaturate and increase contrast for old film look */
-            filter: grayscale(80%) contrast(1.2) sepia(10%) brightness(0.8);
-            opacity: 0.8;
-            transition: all 0.5s ease;
-        }
-
-        /* Add the grain and vignette overlay pseudo-element */
+        .content-section .card img { filter: grayscale(80%) contrast(1.2) sepia(10%) brightness(0.8); opacity: 0.8; transition: all 0.5s ease; }
         .content-section .card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 2; /* Above image, below title */
-            pointer-events: none;
-            /* SVG Noise + Dark Vignette */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E"),
+            content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E"), 
                               radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.9) 100%);
-            background-blend-mode: soft-light, normal;
-            opacity: 1;
-            transition: all 0.5s ease;
+            background-blend-mode: soft-light, normal; opacity: 1; transition: all 0.5s ease;
         }
-
-        /* Hover effects - Restore color */
-        .content-section .card:hover img {
-            filter: grayscale(0%) contrast(1) sepia(0%) brightness(1);
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        .content-section .card:hover::after {
-            opacity: 0.5; /* Reduce grain visibility on hover */
-        }
-
+        .content-section .card:hover img { filter: grayscale(0%) contrast(1) sepia(0%) brightness(1); opacity: 1; transform: scale(1.1); }
+        .content-section .card:hover::after { opacity: 0.5; }
 
         /* --- VALUE SECTION --- */
         .value-section { 
-            padding: 100px 5%; 
-            background: radial-gradient(circle at top right, #0f1f18 0%, var(--bg-darker) 60%); 
-            position: relative; z-index: 20; 
-            border-top: 1px solid #111;
+            padding: 80px 5%; background: radial-gradient(circle at top right, #0f1f18 0%, var(--bg-darker) 60%); 
+            position: relative; z-index: 20; border-top: 1px solid #111;
         }
+
         .value-grid {
-            display: grid; grid-template-columns: 1fr 0.8fr; gap: 80px;
-            max-width: 1200px; margin: 0 auto; align-items: center;
+            display: grid; grid-template-columns: 1fr 0.8fr; gap: 60px;
+            max-width: 1100px; margin: 0 auto; align-items: center;
         }
 
-        /* --- LOGO GRID --- */
         .logo-grid-container {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-            gap: 15px; margin-top: 30px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 12px; margin-top: 25px;
         }
+
         .logo-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px; height: 60px;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s ease; position: relative; overflow: hidden; padding: 10px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; height: 55px; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; position: relative; overflow: hidden; padding: 8px;
         }
-        .logo-card:hover {
-            background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); transform: translateY(-3px);
-        }
-        .logo-card img {
-            max-width: 100%; max-height: 100%; opacity: 0.6; filter: grayscale(100%); transition: all 0.3s ease;
-        }
+        .logo-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); transform: translateY(-3px); }
+        .logo-card img { max-width: 100%; max-height: 100%; opacity: 0.8; transition: all 0.3s ease; border-radius: 6px; }
         .logo-card:hover img { opacity: 1; filter: grayscale(0%); }
-
-        .text-logo {
-            font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: -0.5px;
-            line-height: 1; text-align: center; opacity: 0.7; color: white; transition: 0.3s;
-        }
-        .logo-card:hover .text-logo { opacity: 1; }
-        .tnt-logo { color: #ff00e6; font-style: italic; }
-        .premier-logo { color: #c00; }
-
+        
         .pricing-card {
             background: rgba(255,255,255,0.03); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.08); padding: 50px 40px; border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.08); padding: 40px 30px; border-radius: 20px;
             position: relative; overflow: hidden; transition: 0.4s;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
         .pricing-card:hover { border-color: var(--irish-green); box-shadow: 0 30px 60px rgba(16, 185, 129, 0.1); }
         
         .ribbon {
-            position: absolute; top: 25px; right: -35px;
-            background: var(--premium-gold); color: black;
-            padding: 8px 45px; font-size: 0.75rem; font-weight: 800;
-            text-transform: uppercase; transform: rotate(45deg);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: absolute; top: 25px; right: -35px; background: var(--premium-gold); color: black;
+            padding: 6px 40px; font-size: 0.7rem; font-weight: 800;
+            text-transform: uppercase; transform: rotate(45deg); box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .price-display {
-            font-size: 4rem; font-weight: 800; color: white;
-            display: flex; align-items: baseline; margin: 25px 0;
+            font-size: 3.5rem; font-weight: 800; color: white; display: flex; align-items: baseline; margin: 20px 0;
             text-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
         }
-        .price-display span { font-size: 2rem; color: var(--premium-gold); margin-right: 5px; }
-        .price-display small { font-size: 1rem; color: var(--text-muted); font-weight: 500; margin-left: 10px; }
+        .price-display span { font-size: 1.8rem; color: var(--premium-gold); margin-right: 5px; }
+        .price-display small { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; margin-left: 10px; }
 
-        .feature-list { list-style: none; padding: 0; margin-bottom: 30px; }
-        .feature-list li {
-            margin-bottom: 18px; display: flex; align-items: center; color: #e5e7eb; font-size: 1rem;
-        }
+        .feature-list { list-style: none; padding: 0; margin-bottom: 25px; }
+        .feature-list li { margin-bottom: 15px; display: flex; align-items: center; color: #e5e7eb; font-size: 0.95rem; }
         .check-icon {
-            color: var(--irish-green); margin-right: 15px;
-            background: rgba(16, 185, 129, 0.15); padding: 4px; border-radius: 50%; font-size: 0.7rem;
-            width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+            color: var(--irish-green); margin-right: 12px;
+            background: rgba(16, 185, 129, 0.15); padding: 4px; border-radius: 50%; font-size: 0.65rem;
+            width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
         }
 
         .download-badge {
             display: inline-flex; align-items: center; gap: 10px;
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-            padding: 10px 20px; border-radius: 50px; font-size: 0.9rem;
-            margin-top: 25px; color: var(--premium-gold);
+            padding: 8px 18px; border-radius: 50px; font-size: 0.85rem;
+            margin-top: 20px; color: var(--premium-gold);
         }
 
         /* --- FAQ --- */
-        .faq-section { padding: 100px 5%; background: var(--bg-black); }
-        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-section { padding: 80px 5%; background: var(--bg-black); }
+        .faq-container { max-width: 750px; margin: 0 auto; }
         
         details {
             background: #0a0a0a; border: 1px solid #222; border-radius: 12px;
-            margin-bottom: 15px; padding: 20px; transition: all 0.3s;
+            margin-bottom: 12px; padding: 18px; transition: all 0.3s;
         }
         details:hover { border-color: #333; }
         details[open] { border-color: var(--irish-dark); background: rgba(16, 185, 129, 0.03); }
+
         summary {
             font-weight: 600; color: white; cursor: pointer; list-style: none;
-            display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;
+            display: flex; justify-content: space-between; align-items: center; font-size: 1rem;
         }
         summary::-webkit-details-marker { display: none; }
-        summary::after { content: '+'; font-size: 1.5rem; color: var(--premium-gold); font-weight: 300; transition: 0.3s; }
+        summary::after { content: '+'; font-size: 1.3rem; color: var(--premium-gold); font-weight: 300; transition: 0.3s; }
         details[open] summary::after { content: '-'; transform: rotate(180deg); }
-        .faq-content { margin-top: 15px; color: #9ca3af; line-height: 1.6; font-size: 0.95rem; }
+
+        .faq-content { margin-top: 12px; color: #9ca3af; line-height: 1.6; font-size: 0.9rem; }
 
         /* --- FOOTER & MODALS --- */
         footer {
-            padding: 60px 5%; text-align: center; color: #6b7280; font-size: 0.85rem;
+            padding: 50px 5%; text-align: center; color: #6b7280; font-size: 0.8rem;
             background: #020202; border-top: 1px solid #111;
         }
-        .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 25px; }
+
+        .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; margin-top: 20px; }
         .footer-links a { color: #9ca3af; text-decoration: none; transition: 0.3s; cursor: pointer; }
         .footer-links a:hover { color: white; text-decoration: underline; }
 
@@ -477,49 +409,125 @@
         .modal-overlay.show { opacity: 1; }
         
         .modal-content {
-            background: #0f1613; border: 1px solid #333; width: 90%; max-width: 600px;
-            max-height: 80vh; overflow-y: auto; padding: 40px; border-radius: 16px;
+            background: #0f1613; border: 1px solid #333; width: 90%; max-width: 550px;
+            max-height: 80vh; overflow-y: auto; padding: 35px; border-radius: 16px;
             position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         }
+
         .modal-close {
-            position: absolute; top: 20px; right: 20px; color: #fff; cursor: pointer; font-size: 1.5rem;
-            width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: #222; border-radius: 50%;
+            position: absolute; top: 15px; right: 15px; color: #fff; cursor: pointer; font-size: 1.3rem;
+            width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: #222; border-radius: 50%;
         }
 
         .contact-modal-size {
-            max-width: 500px;
+            max-width: 450px;
             background: linear-gradient(145deg, #111, #050505);
             border: 1px solid #222;
         }
 
-        .form-group { margin-bottom: 15px; }
+        .form-group { margin-bottom: 12px; }
         .form-input {
-            width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05);
+            width: 100%; padding: 14px; background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px;
-            color: white; font-family: 'Inter', sans-serif; font-size: 1rem; transition: 0.3s;
+            color: white; font-family: 'Inter', sans-serif; font-size: 0.95rem; transition: 0.3s;
         }
         .form-input:focus {
             background: rgba(0, 0, 0, 0.3); border-color: var(--irish-green);
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
+
         .success-msg { color: var(--irish-green); font-weight: bold; display:block; margin-top:10px; }
         .error-msg { color: #ef4444; font-weight: bold; display:block; margin-top:10px; }
 
-        .contact-container {
-            position: fixed; bottom: 30px; right: 30px;
-            display: flex; flex-direction: column; gap: 15px; z-index: 2000;
+        /* --- NEW LIVE CHAT WIDGET STYLES --- */
+        .chat-widget-container {
+            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+            display: flex; flex-direction: column; align-items: flex-end;
         }
-        .float-btn {
-            width: 55px; height: 55px; border-radius: 50%;
+
+        .chat-toggle-btn {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: var(--premium-gradient);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
             display: flex; align-items: center; justify-content: center;
-            font-size: 24px; text-decoration: none;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: white; cursor: pointer;
+            cursor: pointer; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
         }
-        .float-btn:hover { transform: scale(1.15); }
-        .btn-whatsapp-float { background: #25D366; }
-        .btn-email-float { background: var(--premium-gold); color: black; }
         
+        .chat-toggle-btn:hover { transform: scale(1.1); }
+        .chat-toggle-btn i { font-size: 28px; color: white; }
+        .chat-notification {
+            position: absolute; top: 0; right: 0; width: 14px; height: 14px;
+            background: #ef4444; border-radius: 50%; border: 2px solid #000;
+        }
+
+        .chat-box {
+            position: absolute; bottom: 80px; right: 0;
+            width: 350px; height: 500px;
+            background: #0f1613;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            display: none; flex-direction: column;
+            overflow: hidden; opacity: 0; transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .chat-box.open { display: flex; opacity: 1; transform: translateY(0); }
+
+        .chat-header {
+            background: linear-gradient(90deg, #065f46, #10B981);
+            padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .chat-header h4 { margin: 0; color: white; font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+        .status-dot { width: 8px; height: 8px; background: #10B981; border-radius: 50%; border: 1px solid white; display: inline-block; }
+        .chat-close { cursor: pointer; color: white; opacity: 0.8; transition: 0.3s; }
+        .chat-close:hover { opacity: 1; }
+
+        .chat-messages {
+            flex: 1; padding: 20px; overflow-y: auto;
+            display: flex; flex-direction: column; gap: 15px;
+            background: #0a0a0a;
+        }
+
+        .message {
+            max-width: 80%; padding: 10px 14px; font-size: 0.9rem; line-height: 1.4;
+            border-radius: 12px; position: relative;
+        }
+        
+        .msg-bot {
+            align-self: flex-start;
+            background: #222; color: #e5e7eb;
+            border-bottom-left-radius: 2px;
+        }
+        
+        .msg-user {
+            align-self: flex-end;
+            background: var(--irish-dark); color: white;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-input-area {
+            padding: 15px; background: #0f1613;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex; gap: 10px;
+        }
+        
+        .chat-input {
+            flex: 1; background: rgba(255,255,255,0.05); border: none;
+            padding: 10px; border-radius: 6px; color: white; font-family: 'Inter';
+        }
+        
+        .chat-send {
+            background: var(--premium-gold); border: none; width: 40px; height: 40px;
+            border-radius: 6px; cursor: pointer; color: black; display: flex; align-items: center; justify-content: center;
+        }
+        
+        .chat-timestamp { font-size: 0.65rem; color: #666; margin-top: 4px; display: block; text-align: right; }
+
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7); }
             70% { box-shadow: 0 0 0 20px rgba(251, 191, 36, 0); }
@@ -532,11 +540,11 @@
 
         /* RESPONSIVE */
         @media screen and (max-width: 900px) {
-            .hero-content h1 { font-size: 3rem; }
-            .value-grid { grid-template-columns: 1fr; gap: 50px; }
-            .pricing-card { padding: 40px 25px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .value-grid { grid-template-columns: 1fr; gap: 40px; }
+            .pricing-card { padding: 35px 20px; }
             .hero-container { padding-bottom: 40px; }
-            .rotating-logo { height: 1.2em; margin-bottom: 5px; }
+            .marquee-container { max-width: 100%; margin-left: -5%; width: 110%; } 
             
             .nav-actions {
                 position: fixed; top: 0; right: 0; width: 85%; height: 100vh;
@@ -548,18 +556,22 @@
             .nav-actions.active { transform: translateX(0); }
             
             .mobile-toggle { display: block; }
-            .login-link { font-size: 1.5rem; margin-bottom: 30px; color: white; }
-            .nav-btn-outline { font-size: 1rem; padding: 15px 40px; }
+            .login-link { font-size: 1.2rem; margin-bottom: 25px; color: white; }
+            .nav-btn-outline { font-size: 0.9rem; padding: 12px 35px; }
             .logo-grid-container { grid-template-columns: repeat(3, 1fr); }
+            
+            /* Chat mobile adjust */
+            .chat-box { width: 300px; bottom: 90px; height: 450px; }
         }
         
         @media screen and (max-width: 480px) {
-            .logo-text { display: none; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .ribbon { top: 15px; right: -30px; padding: 5px 35px; font-size: 0.65rem; }
-            .contact-container { bottom: 20px; right: 20px; }
-            .float-btn { width: 50px; height: 50px; font-size: 20px; }
-            .price-display { font-size: 3.5rem; }
+            .logo-text { display: block; font-size: 0.95rem; }
+            .hero-content h1 { font-size: 2rem; }
+            .ribbon { top: 15px; right: -30px; padding: 5px 35px; font-size: 0.6rem; }
+            .chat-widget-container { bottom: 20px; right: 20px; }
+            .chat-toggle-btn { width: 50px; height: 50px; }
+            .chat-toggle-btn i { font-size: 24px; }
+            .price-display { font-size: 2.8rem; }
             .action-buttons { flex-direction: column; gap: 10px; }
             .btn-base { width: 100%; }
         }
@@ -576,6 +588,7 @@
         <div class="mobile-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </div>
+
         <div class="nav-actions" id="navMenu">
             <a href="#" class="login-link">Logáil Isteach</a>
             <a href="#subscribe" class="nav-btn-outline" onclick="toggleMenu()">Join the Club</a>
@@ -586,23 +599,60 @@
         <div class="carousel-slide active" style="background-image: url('anthony.jpg');"></div>
         <div class="carousel-slide" style="background-image: url('katie.jpg');"></div>
         <div class="carousel-slide" style="background-image: url('troy.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('sky.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('prime.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('paramount.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('mickkatie.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('hbo.jpg');"></div>
         
         <div class="hero-content reveal">
             <div class="premium-tag">Full Access Unlocked</div>
             <h1>
                 Don't Just Watch TV.<br>
-                <span class="text-gradient">Unleash</span> 
-                <span class="dynamic-wrapper">
-                    <span id="dynamic-platform" class="dynamic-text">Everything.</span>
-                </span>
+                <span class="text-gradient">Unleash</span> Everything.
             </h1>
+
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/netflix/ffffff" alt="Netflix">
+                    <img class="reel-logo" src="primevideo.png" alt="Prime Video">
+                    <img class="reel-logo" src="disneyicon.png" alt="Disney+">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/appletv/ffffff" alt="Apple TV+">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/paramountplus/ffffff" alt="Paramount+">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/hbo/ffffff" alt="HBO">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/dazn/ffffff" alt="DAZN">
+                    <img class="reel-logo" src="ESPNLOGO.png" alt="ESPN">
+                    
+                    <img class="reel-logo" src="skysportslogo.png" alt="Sky Sports">
+                    <img class="reel-logo" src="tntsportslogo.png" alt="TNT Sports">
+                    <img class="reel-logo" src="BEINLOGO.png" alt="BeIN Sports">
+                    <img class="reel-logo" src="BTSPORTLOGO.png" alt="BT Sport">
+                    
+                    <span class="reel-logo" style="font-size:20px; font-weight:900; letter-spacing:-1px; display:flex; align-items:center; color:white;">BOXNATION</span>
+
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/netflix/ffffff" alt="Netflix">
+                    <img class="reel-logo" src="primevideo.png" alt="Prime Video">
+                    <img class="reel-logo" src="disneyicon.png" alt="Disney+">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/appletv/ffffff" alt="Apple TV+">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/paramountplus/ffffff" alt="Paramount+">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/hbo/ffffff" alt="HBO">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/dazn/ffffff" alt="DAZN">
+                    <img class="reel-logo" src="ESPNLOGO.png" alt="ESPN">
+                    
+                    <img class="reel-logo" src="skysportslogo.png" alt="Sky Sports">
+                    <img class="reel-logo" src="tntsportslogo.png" alt="TNT Sports">
+                    <img class="reel-logo" src="BEINLOGO.png" alt="BeIN Sports">
+                    <img class="reel-logo" src="BTSPORTLOGO.png" alt="BT Sport">
+                    
+                    <span class="reel-logo" style="font-size:20px; font-weight:900; letter-spacing:-1px; display:flex; align-items:center; color:white;">BOXNATION</span>
+                </div>
+            </div>
+
             <p>
-                Stop paying multiple bills. Get instant access to <strong style="color:white;">Netflix, Sky Sports, Disney+, Prime Video, Apple TV+, Paramount+, TNT Sports</strong> all in one powerful dashboard.
+                Stop paying multiple bills. Get instant access to 
+                <img src="https://cdn.simpleicons.org/netflix/ffffff" class="inline-brand-logo" alt="Netflix">, 
+                <img src="skysportslogo.png" class="inline-brand-logo" alt="Sky Sports">, 
+                <img src="disneyicon.png" class="inline-brand-logo" alt="Disney+">, 
+                <img src="primevideo.png" class="inline-brand-logo" alt="Prime Video">, 
+                <img src="https://cdn.simpleicons.org/appletv/ffffff" class="inline-brand-logo" alt="Apple TV">, 
+                <img src="https://cdn.simpleicons.org/paramountplus/ffffff" class="inline-brand-logo" alt="Paramount+">, 
+                <img src="tntsportslogo.png" class="inline-brand-logo" alt="TNT Sports"> 
+                all in one powerful dashboard.
             </p>
             <a href="#subscribe" class="btn-base btn-emerald">
                 Get Instant Access <i class="fas fa-bolt"></i>
@@ -670,39 +720,40 @@
     <div id="subscribe" class="value-section">
         <div class="value-grid">
             <div class="reveal">
-                <h2 style="font-size: 3rem; margin-top:0; line-height: 1.1; color: white;">Why Overpay?</h2>
-                <p style="font-size: 1.15rem; color: #9ca3af; line-height: 1.7; margin-bottom: 40px;">
+                <h2 style="font-size: 2.5rem; margin-top:0; line-height: 1.1; color: white;">Why Overpay?</h2>
+                <p style="font-size: 1rem; color: #9ca3af; line-height: 1.7; margin-bottom: 40px;">
                     Traditional cable and individual streaming subscriptions can cost over <strong>€200+/month</strong>. 
                     We combine <strong>every major service</strong> into a single, high-speed interface for a fraction of the price.
                 </p>
                 
-                <h4 style="color: white; margin-bottom: 20px; font-weight: 600;">Included Libraries:</h4>
+                <h4 style="color: white; margin-bottom: 20px; font-weight: 600; font-size: 1rem;">Included Libraries:</h4>
                 <div class="logo-grid-container">
                     <div class="logo-card" title="Netflix"><img src="https://cdn.simpleicons.org/netflix/E50914" alt="Netflix"></div>
-                    <div class="logo-card" title="Prime Video"><img src="https://cdn.simpleicons.org/primevideo/00A8E1" alt="Prime"></div>
-                    <div class="logo-card" title="Disney+"><img src="https://cdn.simpleicons.org/disneyplus/113CCF" alt="Disney+"></div>
+                    <div class="logo-card" title="Prime Video"><img src="primevideo.png" alt="Prime"></div>
+                    <div class="logo-card" title="Disney+"><img src="disneyicon.png" alt="Disney+"></div>
                     <div class="logo-card" title="Apple TV+"><img src="https://cdn.simpleicons.org/appletv/ffffff" alt="Apple TV"></div>
                     <div class="logo-card" title="Paramount+"><img src="https://cdn.simpleicons.org/paramountplus/0066CC" alt="Paramount"></div>
                     <div class="logo-card" title="HBO"><img src="https://cdn.simpleicons.org/hbo/ffffff" alt="HBO"></div>
                     <div class="logo-card" title="Hulu"><img src="https://cdn.simpleicons.org/hulu/1CE783" alt="Hulu"></div>
                     <div class="logo-card" title="Peacock"><img src="https://cdn.simpleicons.org/peacock/ffffff" alt="Peacock"></div>
-                    <div class="logo-card" title="Sky Sports"><img src="https://cdn.simpleicons.org/sky/E6005C" alt="Sky"></div>
+                    
+                    <div class="logo-card" title="Sky Sports"><img src="skysportslogo.png" alt="Sky Sports"></div>
                     <div class="logo-card" title="DAZN"><img src="https://cdn.simpleicons.org/dazn/ffffff" alt="DAZN"></div>
                     <div class="logo-card" title="UFC"><img src="https://cdn.simpleicons.org/ufc/D20A0A" alt="UFC"></div>
-                    <div class="logo-card"><div class="text-logo tnt-logo">TNT<br>SPORTS</div></div>
-                    <div class="logo-card"><div class="text-logo premier-logo">PREMIER<br>SPORTS</div></div>
-                    <div class="logo-card"><div class="text-logo" style="color:#e10600">F1<br>TV</div></div>
+                    <div class="logo-card" title="TNT Sports"><img src="tntsportslogo.png" alt="TNT Sports"></div>
+                    <div class="logo-card" title="BT Sport"><img src="BTSPORTLOGO.png" alt="BT Sport"></div>
+                    <div class="logo-card" title="BeIN Sports"><img src="BEINLOGO.png" alt="BeIN"></div>
                 </div>
                 
                 <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px; border-left: 4px solid var(--premium-gold);">
-                    <p style="margin:0; font-style:italic; color: #ccc;">"The picture quality is actually better than my old cable box. Setup took 5 mins."</p>
-                    <p style="margin:10px 0 0 0; color: var(--premium-gold); font-size: 0.9rem;">- John D., Dublin</p>
+                    <p style="margin:0; font-style:italic; color: #ccc; font-size: 0.95rem;">"The picture quality is actually better than my old cable box. Setup took 5 mins."</p>
+                    <p style="margin:8px 0 0 0; color: var(--premium-gold); font-size: 0.85rem;">- John D., Dublin</p>
                 </div>
             </div>
 
             <div class="pricing-card reveal">
                 <div class="ribbon">Best Value</div>
-                <div style="color:var(--irish-green); font-weight:800; letter-spacing:2px; font-size: 0.85rem; text-transform:uppercase;">The Emerald Pass</div>
+                <div style="color:var(--irish-green); font-weight:800; letter-spacing:2px; font-size: 0.8rem; text-transform:uppercase;">The Emerald Pass</div>
                 <div class="price-display"><span>€</span>30 <small>/ month</small></div>
                 <ul class="feature-list">
                     <li><i class="fas fa-check check-icon"></i> All Streaming Platforms</li>
@@ -719,18 +770,18 @@
                         <i class="fas fa-envelope"></i> Email Us
                     </button>
                 </div>
-                <p style="text-align:center; color:#555; font-size:0.8rem; margin-top:20px;">No Contract. Cancel Anytime.</p>
+                <p style="text-align:center; color:#555; font-size:0.75rem; margin-top:20px;">No Contract. Cancel Anytime.</p>
             </div>
         </div>
     </div>
 
     <div id="download-app" class="content-section" style="border-top: 1px solid #111; background: linear-gradient(to bottom, #020202 0%, #050505 100%); padding: 80px 5%; text-align: center;">
-        <div class="reveal" style="max-width: 700px; margin: 0 auto;">
-            <h2 style="font-size: 2.5rem; color: white; margin-bottom: 10px;">Already have an account?</h2>
-            <p style="color: #9ca3af; font-size: 1.1rem; margin-bottom: 35px;">
+        <div class="reveal" style="max-width: 650px; margin: 0 auto;">
+            <h2 style="font-size: 2.2rem; color: white; margin-bottom: 10px;">Already have an account?</h2>
+            <p style="color: #9ca3af; font-size: 1rem; margin-bottom: 30px;">
                 Download the player to get started. Our system auto-detects your device for the best version.
             </p>
-            <button onclick="smartDownload()" class="btn-base btn-emerald" style="width: auto; padding: 20px 50px; font-size: 1.1rem; box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);">
+            <button onclick="smartDownload()" class="btn-base btn-emerald" style="width: auto; padding: 18px 45px; font-size: 1rem; box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);">
                 <i class="fas fa-download"></i> <span id="smart-dl-text">Download Player</span>
             </button>
             <br>
@@ -742,9 +793,9 @@
 
     <div class="faq-section">
         <div class="faq-container reveal">
-            <div style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Common Questions</h2>
-                <p style="color: #666;">Everything you need to know to get started.</p>
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 2rem; margin-bottom: 10px;">Common Questions</h2>
+                <p style="color: #666; font-size: 0.95rem;">Everything you need to know to get started.</p>
             </div>
             <details>
                 <summary>What devices can I use?</summary>
@@ -760,30 +811,52 @@
             </details> 
             <details>
                 <summary>Is Live Sport included?</summary>
-                <div class="faq-content">Yes. The subscription includes all Sky Sports, TNT Sports, Premier Sports channels as standard.</div>
+                <div class="faq-content">Yes. The subscription includes all 
+                    <img src="skysportslogo.png" class="inline-brand-logo" alt="Sky Sports">, 
+                    <img src="tntsportslogo.png" class="inline-brand-logo" alt="TNT Sports">, 
+                    <img src="https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/en/9/96/Premier_Sports_logo_2022.svg&w=100&output=webp" class="inline-brand-logo" alt="Premier Sports"> 
+                    channels as standard.
+                </div>
             </details>
         </div>
     </div>
 
     <footer>
-        <i class="fas fa-play-circle" style="font-size: 40px; color: var(--irish-green); margin-bottom: 20px;"></i>
+        <i class="fas fa-play-circle" style="font-size: 36px; color: var(--irish-green); margin-bottom: 15px;"></i>
         <p>IDTV Éire &copy; 2024</p>
         <div class="footer-links">
             <a onclick="openModal('privacy')">Privacy Policy</a>
             <a onclick="openModal('terms')">Terms of Service</a>
             <a onclick="openContactModal()">Contact Support</a>
         </div>
-        <p style="color:#444; font-size: 0.75rem; max-width: 600px; margin: 30px auto 0 auto;">
+        <p style="color:#444; font-size: 0.7rem; max-width: 550px; margin: 25px auto 0 auto;">
             Disclaimer: We do not host any content. All content is aggregated via third-party providers. We are not responsible for the legality of the stream sources.
         </p>
     </footer>
 
-    <div class="contact-container">
-        <a href="https://wa.me/353800000000?text=I'm%20interested%20in%20the%20Emerald%20Pass" class="float-btn btn-whatsapp-float" target="_blank" title="Chat on WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <div onclick="openContactModal()" class="float-btn btn-email-float pulse-effect" style="cursor: pointer;" title="Email Us">
-            <i class="fas fa-envelope"></i>
+    <div class="chat-widget-container">
+        <div class="chat-toggle-btn pulse-effect" onclick="toggleChat()">
+            <div class="chat-notification"></div>
+            <i class="fas fa-comment-dots" id="chat-icon"></i>
+        </div>
+
+        <div class="chat-box" id="chat-box">
+            <div class="chat-header">
+                <h4><span class="status-dot"></span> Live Support</h4>
+                <div class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></div>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="message msg-bot">
+                    Hello! Welcome to IDTV Éire. <br>How can we help you today?
+                    <span class="chat-timestamp">Just now</span>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chat-input" placeholder="Type a message..." onkeypress="handleEnter(event)">
+                <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
         </div>
     </div>
 
@@ -797,8 +870,8 @@
     <div id="contactModal" class="modal-overlay">
         <div class="modal-content contact-modal-size">
             <span class="modal-close" onclick="closeContactModal()">&times;</span>
-            <h2 style="color: white; margin-top: 0;">Get Connected</h2>
-            <p style="color: #9ca3af; margin-bottom: 25px;">Fill out the form below or use WhatsApp for faster response.</p>
+            <h2 style="color: white; margin-top: 0; font-size: 1.8rem;">Get Connected</h2>
+            <p style="color: #9ca3af; margin-bottom: 25px; font-size: 0.95rem;">Fill out the form below or use WhatsApp for faster response.</p>
             
             <form id="ajax-contact-form" action="https://formspree.io/f/xqepadpv" method="POST">
                 <div class="form-group">
@@ -818,16 +891,65 @@
                     <span id="btn-text">Send Message</span>
                     <i class="fas fa-paper-plane"></i>
                 </button>
-                <div id="form-response" style="margin-top: 15px; text-align: center; font-size: 0.9rem;"></div>
+                <div id="form-response" style="margin-top: 15px; text-align: center; font-size: 0.85rem;"></div>
             </form>
         </div>
     </div>
 
     <script>
-        // --- AUTO-SCROLL FOR MOVIES & SPORTS ---
+        // --- CHAT WIDGET LOGIC ---
+        function toggleChat() {
+            const chatBox = document.getElementById('chat-box');
+            const chatIcon = document.getElementById('chat-icon');
+            
+            if (chatBox.classList.contains('open')) {
+                chatBox.classList.remove('open');
+                setTimeout(() => chatBox.style.display = 'none', 300);
+                chatIcon.classList.remove('fa-times');
+                chatIcon.classList.add('fa-comment-dots');
+            } else {
+                chatBox.style.display = 'flex';
+                setTimeout(() => chatBox.classList.add('open'), 10);
+                chatIcon.classList.remove('fa-comment-dots');
+                chatIcon.classList.add('fa-times');
+            }
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            const text = input.value.trim();
+            
+            if (text === "") return;
+
+            // Add User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message msg-user';
+            userMsg.innerHTML = `${text} <span class="chat-timestamp">Just now</span>`;
+            messages.appendChild(userMsg);
+            
+            input.value = "";
+            messages.scrollTop = messages.scrollHeight;
+
+            // Simulate Bot Typing/Reply
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message msg-bot';
+                botMsg.innerHTML = `Thanks for reaching out! <br><br>For the fastest support, please click below to continue on WhatsApp.<br><br><a href="https://wa.me/353800000000?text=${encodeURIComponent(text)}" target="_blank" style="color:#10B981; text-decoration:none; font-weight:bold;">👉 Click here to Open WhatsApp</a> <span class="chat-timestamp">Bot</span>`;
+                messages.appendChild(botMsg);
+                messages.scrollTop = messages.scrollHeight;
+            }, 1000);
+        }
+
+        // --- EXISTING SCRIPTS ---
+        // PERFORMANCE OPTIMIZED SCROLLING
         const scrollers = document.querySelectorAll('.row-scroll');
+
         scrollers.forEach(scroller => {
-            // Duplicate content for infinite scrolling effect
             const content = Array.from(scroller.children);
             content.forEach(item => {
                 const clone = item.cloneNode(true);
@@ -835,74 +957,46 @@
             });
 
             let scrollPos = 0;
-            const speed = 0.5; // Premium smooth speed
+            const speed = 0.5;
+            let animationId = null;
 
-            function autoScroll() {
-                // Pause scrolling if user hovers over the row
+            function animate() {
                 if (scroller.matches(':hover')) {
-                    requestAnimationFrame(autoScroll);
+                    animationId = requestAnimationFrame(animate);
                     return; 
                 }
 
                 scrollPos += speed;
-                // If scrolled past half (the original content width), reset to 0
                 if (scrollPos >= scroller.scrollWidth / 2) {
                     scrollPos = 0;
                 }
                 scroller.scrollLeft = scrollPos;
-                requestAnimationFrame(autoScroll);
+                animationId = requestAnimationFrame(animate);
             }
-            autoScroll();
-        });
 
-        // --- ANIMATIONS & INTERACTIVITY (LOGOS) ---
-        const platforms = [
-            '<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="rotating-logo">',
-            '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Sky_Sports_logo_%282020%29.svg/2560px-Sky_Sports_logo_%282020%29.svg.png" alt="Sky Sports" class="rotating-logo">',
-            '<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="rotating-logo">',
-            '<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" alt="Prime Video" class="rotating-logo">',
-            '<img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/TNT_Sports_logo.svg" alt="TNT Sports" class="rotating-logo" style="filter: invert(1);">', 
-            '<img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Apple_TV_Plus_Logo.svg" alt="Apple TV+" class="rotating-logo">'
-        ];
-
-        let wordIndex = 0;
-        const dynamicText = document.getElementById("dynamic-platform");
-
-        // Set initial state
-        dynamicText.style.opacity = '1';
-        dynamicText.style.transform = 'translateY(0)';
-        // Allow HTML (images) instead of just Text
-        dynamicText.innerHTML = platforms[0]; 
-
-        setInterval(() => {
-            // Animate OUT
-            dynamicText.style.transition = 'all 0.4s ease-in';
-            dynamicText.style.transform = 'translateY(-100%)';
-            dynamicText.style.opacity = '0';
-            
-            setTimeout(() => {
-                // Change Content
-                wordIndex = (wordIndex + 1) % platforms.length;
-                dynamicText.innerHTML = platforms[wordIndex]; 
-                
-                // Reset position instantly while invisible
-                dynamicText.style.transition = 'none';
-                dynamicText.style.transform = 'translateY(100%)';
-                
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        // Animate IN
-                        dynamicText.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                        dynamicText.style.transform = 'translateY(0)';
-                        dynamicText.style.opacity = '1';
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (!animationId) animate();
+                        } else {
+                            if (animationId) {
+                                cancelAnimationFrame(animationId);
+                                animationId = null;
+                            }
+                        }
                     });
                 });
-            }, 400); 
-        }, 3000); 
+                observer.observe(scroller);
+            } else {
+                animate();
+            }
+        });
 
         // Slideshow
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.carousel-slide');
+        
         function nextSlide() {
             slides[currentSlideIndex].classList.remove('active');
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
@@ -940,7 +1034,7 @@
             }
         }
 
-        // Auto-close menu when link clicked
+        // Auto-close menu
         const navLinks = document.querySelectorAll('.nav-actions a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -971,7 +1065,7 @@
             else if (/windows/i.test(userAgent)) osName = "Windows";
             else if (/macintosh|mac os x/i.test(userAgent)) osName = "macOS";
             else if (/linux/i.test(userAgent)) osName = "Linux";
-
+            
             if(osName) {
                 document.getElementById("smart-dl-text").innerText = "Download for " + osName.split(" ")[0];
                 document.getElementById("os-name").innerText = "Detected: " + osName;
@@ -982,6 +1076,7 @@
         // Modals
         const modal = document.getElementById('legalModal');
         const modalText = document.getElementById('modalText');
+
         const content = {
             terms: `<h2 style="margin-top:0; border-bottom:1px solid #333; padding-bottom:15px;">Terms of Service</h2><p><strong>1. Acceptance of Terms:</strong> By accessing and using IDTV Éire, you accept and agree to be bound by the terms and provision of this agreement.</p><p><strong>2. Service Delivery:</strong> Digital credentials will be delivered via email/WhatsApp. Due to the nature of digital goods, refunds are processed at our discretion if service cannot be provided.</p><p><strong>3. Content Disclaimer:</strong> IDTV Éire does not host, provide, or store any media files. We act solely as a technical aggregator of publicly available third-party streams.</p>`,
             privacy: `<h2 style="margin-top:0; border-bottom:1px solid #333; padding-bottom:15px;">Privacy Policy</h2><p><strong>1. Data Collection:</strong> We do not store credit card details. We only collect the email address/number used for correspondence.</p><p><strong>2. No Logs Policy:</strong> We do not monitor or log your viewing activity. Your streaming habits remain private.</p><p><strong>3. Security:</strong> We use encrypted email providers (ProtonMail) and End-to-End encrypted messaging (WhatsApp).</p>`
@@ -1018,7 +1113,7 @@
             setTimeout(() => { contactModal.style.display = 'none'; document.body.style.overflow = 'auto'; formResponse.innerHTML = ''; }, 300);
         }
 
-        // Updated AJAX Handler for Formspree
+        // AJAX Handler for Formspree
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const originalText = btnText.innerText;
