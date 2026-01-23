@@ -34,14 +34,16 @@ body {
 
 h1, h2, h3, h4, .logo-text, .step-num { font-family: var(--font-heading); }
 
-/* --- NETFLIX STYLE INTRO --- */
+/* --- NETFLIX STYLE INTRO (Turbo Speed) --- */
 #netflix-intro {
     position: fixed; inset: 0; 
     background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
     z-index: 10000;
     display: flex; justify-content: center; align-items: center;
-    animation: fadeOutIntro 0.5s ease-out 3.5s forwards; 
+    /* Speed: Fade out starts at 2.2s, gone by 2.7s */
+    animation: fadeOutIntro 0.5s ease-out 2.2s forwards; 
     pointer-events: none;
+    will-change: opacity;
 }
 #netflix-intro::before {
     content: ''; position: absolute; width: 60vw; height: 60vw;
@@ -50,21 +52,24 @@ h1, h2, h3, h4, .logo-text, .step-num { font-family: var(--font-heading); }
 }
 .intro-content {
     display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;
-    animation: cinematicZoom 4s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+    /* Speed: Zoom takes 2.5s total */
+    animation: cinematicZoom 2.5s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+    will-change: transform;
 }
 .intro-text {
     font-family: var(--font-heading); font-weight: 900; font-size: 9rem;
     letter-spacing: -6px; line-height: 1;
     background: linear-gradient(110deg, #064e3b 0%, #10B981 25%, #ffffff 45%, #fbbf24 55%, #d97706 75%, #000 100%);
     background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 30px rgba(16, 185, 129, 0.5)) drop-shadow(0 10px 10px rgba(0,0,0,0.8));
-    animation: shineMove 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    filter: drop-shadow(0 0 30px rgba(16, 185, 129, 0.5));
+    animation: shineMove 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: background-position, transform;
 }
 @keyframes cinematicZoom {
-    0% { transform: scale(0.5); opacity: 0; filter: blur(20px); }
-    20% { transform: scale(1); opacity: 1; filter: blur(0px); }
+    0% { transform: scale(0.5); opacity: 0; }
+    20% { transform: scale(1); opacity: 1; }
     45% { transform: scale(1.1); }
-    100% { transform: scale(70); opacity: 0; filter: blur(10px); }
+    100% { transform: scale(70); opacity: 0; }
 }
 @keyframes shineMove { 0% { background-position: 0% 50%; } 100% { background-position: 150% 50%; } }
 @keyframes atmospherePulse { 0% { opacity: 0; transform: scale(0.5); } 50% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.5); } }
@@ -224,15 +229,17 @@ footer { background: #000; border-top: 1px solid #111; padding: 60px 5%; text-al
 .opt-text strong { display: block; color: white; font-size: 1.05rem; margin-bottom: 4px; }
 .opt-text span { color: #888; font-size: 0.85rem; }
 .form-input { width: 100%; padding: 16px; background: #0a0a0a; border: 1px solid #333; border-radius: 10px; color: white; margin-bottom: 15px; font-family: var(--font-body); }
+.mobile-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: white; }
 
 /* --- MOBILE OPTIMIZATION (Speed & Layout Fixes) --- */
 @media (max-width: 768px) {
-    /* 1. Fix Hero Text Overflow */
-    .hero-content h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 15px; }
-    .hero-content p { font-size: 0.95rem; line-height: 2; padding-right: 0; }
+    /* 1. Fix Hero Text Overflow - Reduce Size significantly */
+    .hero-content { margin-left: 0; padding: 0 20px; width: 100%; text-align: left; }
+    .hero-content h1 { font-size: 2.2rem; line-height: 1.1; margin-bottom: 15px; }
+    .hero-content p { font-size: 0.9rem; line-height: 1.8; padding-right: 0; }
     
-    /* 2. Fix Inline Logos Sizing */
-    .inline-brand-logo { height: 1.1em; margin: 0 2px; }
+    /* 2. Fix Inline Logos Sizing to prevent line breaks */
+    .inline-brand-logo { height: 1em; margin: 0 1px; }
     
     /* 3. Speed Up Mobile Performance (Disable Noise) */
     .noise-overlay { display: none; }
@@ -250,6 +257,8 @@ footer { background: #000; border-top: 1px solid #111; padding: 60px 5%; text-al
     .blog-slide p { font-size: 0.9rem; }
     .blog-viewport { min-height: 280px; }
     
-    /* 7. Shorter Intro for Mobile */
-    .intro-text { font-size: 4rem; letter-spacing: -3px; }
+    /* 7. Turbo Intro for Mobile */
+    .intro-text { font-size: 4rem; letter-spacing: -3px; filter: none !important; drop-shadow: none !important; }
+    #netflix-intro { background: #000; }
+    #netflix-intro::before { display: none; }
 }

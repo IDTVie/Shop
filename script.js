@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 0. Intro Cleanup
+    // 0. Intro Cleanup (Synced to 2.5s CSS Animation)
     setTimeout(() => {
         const intro = document.getElementById('netflix-intro');
-        if(intro) intro.style.display = 'none';
-    }, 4500);
+        if(intro) {
+            intro.style.display = 'none';
+        }
+    }, 2800);
 
     // 1. Carousel
     let slideIndex = 0;
