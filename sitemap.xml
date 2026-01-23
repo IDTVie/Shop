@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://idtvie.github.io/Shop/</loc>
+    <lastmod>2024-10-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    
+    <image:image>
+      <image:loc>https://idtvie.github.io/Shop/anthony.jpg</image:loc>
+      <image:title>Best IPTV Ireland Sports Streaming</image:title>
+      <image:caption>Watch Premier League and Boxing in 4K on Firestick</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://idtvie.github.io/Shop/katie.jpg</image:loc>
+      <image:title>Live Irish Sports Streaming</image:title>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://idtvie.github.io/Shop/skysportslogo.png</image:loc>
+      <image:title>Sky Sports Stream Ireland</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://idtvie.github.io/Shop/tntsportslogo.png</image:loc>
+      <image:title>TNT Sports Online Free</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://idtvie.github.io/Shop/primevideo.png</image:loc>
+      <image:title>Amazon Prime Video Unlocked</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://idtvie.github.io/Shop/disneyicon.png</image:loc>
+      <image:title>Disney Plus Free Stream</image:title>
+    </image:image>
+  </url>
+
+</urlset>
