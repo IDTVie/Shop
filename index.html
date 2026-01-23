@@ -19,7 +19,6 @@
             --bg-darker: #020202;
             --text-main: #ffffff;
             --text-muted: #9ca3af;
-            /* Premium Theme Variables */
             --irish-green: #10B981; 
             --irish-dark: #065f46;
             --premium-gold: #fbbf24;
@@ -41,6 +40,18 @@
 
         h1, h2, h3, h4, .logo-text, .step-num { font-family: 'Montserrat', sans-serif; }
 
+        /* --- TAWK.TO GHOST MODE --- */
+        iframe[title="chat widget"] {
+            opacity: 0.7 !important; 
+            transition: all 0.4s ease !important;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)) !important;
+        }
+        iframe[title="chat widget"]:hover {
+            opacity: 1 !important;
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.4)) !important;
+        }
+
         /* --- NEON NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%;
@@ -48,50 +59,31 @@
             padding: 10px 5%;
             background: var(--glass-bg);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            transition: all 0.4s ease;
+            z-index: 1000; transition: all 0.4s ease;
         }
-
-        /* The Infinite Green Neon Line - SLOWED DOWN to 10s */
+        /* Infinite Green Neon Line (Slow 10s) */
         nav::after {
-            content: '';
-            position: absolute; bottom: 0; left: 0;
+            content: ''; position: absolute; bottom: 0; left: 0;
             width: 100%; height: 2px;
             background: linear-gradient(90deg, transparent 0%, #10B981 50%, transparent 100%);
-            background-size: 200% 100%;
-            animation: neonFlow 10s linear infinite; 
+            background-size: 200% 100%; animation: neonFlow 10s linear infinite;
             box-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.4);
         }
-
-        @keyframes neonFlow {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
+        @keyframes neonFlow { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
         .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; text-decoration: none; }
-        
-        .logo-icon {
-            font-size: 1.8rem; color: var(--irish-green);
-            transition: 0.3s; animation: iconHeartbeat 3s infinite ease-in-out;
-        }
-        @keyframes iconHeartbeat {
-            0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(16, 185, 129, 0)); }
-            50% { transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.5)); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(16, 185, 129, 0)); }
-        }
+        .logo-icon { font-size: 1.8rem; color: var(--irish-green); transition: 0.3s; animation: iconHeartbeat 3s infinite ease-in-out; }
+        @keyframes iconHeartbeat { 0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(16, 185, 129, 0)); } 50% { transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.5)); } 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(16, 185, 129, 0)); } }
 
         .logo-text {
-            font-weight: 900; font-size: 1.1rem; 
-            letter-spacing: -0.5px; text-transform: uppercase;
+            font-weight: 900; font-size: 1.1rem; letter-spacing: -0.5px; text-transform: uppercase;
             background: linear-gradient(90deg, #fff 0%, #fff 40%, #10B981 50%, #fff 60%, #fff 100%);
-            background-size: 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: textShimmer 6s linear infinite;
         }
         @keyframes textShimmer { 0% { background-position: -200%; } 100% { background-position: 200%; } }
 
         .nav-actions { display: flex; align-items: center; gap: 25px; z-index: 9999; }
-        
         .login-link { color: #d1d5db; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
         .login-link:hover { color: var(--premium-gold); text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
         
@@ -105,23 +97,19 @@
             border-color: var(--irish-green); background: rgba(16, 185, 129, 0.1);
             color: var(--irish-green); box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); transform: scale(1.05);
         }
-        
         .mobile-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: white; z-index: 10002; }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero-container {
             position: relative; height: 100vh; overflow: hidden;
             display: flex; align-items: flex-end; padding-bottom: 70px; background: #000; 
         }
-
         .carousel-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center top; 
-            opacity: 0; transform: translateY(-150px); 
-            transition: opacity 2s ease-in-out, transform 2s ease-out;
+            opacity: 0; transform: translateY(-150px); transition: opacity 2s ease-in-out, transform 2s ease-out;
             z-index: 1; filter: brightness(0.7) contrast(1.1); 
         }
-        /* Bottom-only Gradient */
         .carousel-slide::after {
             content: ''; position: absolute; inset: 0;
             background: linear-gradient(180deg, transparent 0%, rgba(5,5,5,0.3) 50%, #050505 100%);
@@ -132,14 +120,11 @@
             position: relative; z-index: 10; margin-left: 5%;
             max-width: 900px; padding-right: 20px; margin-bottom: 10px;
         }
-
         .premium-tag {
             display: inline-flex; align-items: center; gap: 8px;
             background: rgba(251, 191, 36, 0.1); color: var(--premium-gold);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            padding: 6px 14px; font-size: 0.7rem; font-weight: 800;
-            letter-spacing: 2px; text-transform: uppercase;
-            margin-bottom: 20px; border-radius: 50px;
+            border: 1px solid rgba(251, 191, 36, 0.3); padding: 6px 14px; font-size: 0.7rem; font-weight: 800;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; border-radius: 50px;
             backdrop-filter: blur(4px); animation: float 4s ease-in-out infinite;
         }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
@@ -148,22 +133,17 @@
             font-size: 3.5rem; line-height: 1.05; font-weight: 900; margin: 0 0 20px 0;
             letter-spacing: -2px; color: white; text-shadow: 0 10px 40px rgba(0,0,0,0.8);
         }
-
         .text-gradient {
-            background: var(--text-gradient-gold);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background: var(--text-gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
         .hero-content p {
             font-size: 1.1rem; color: #d1d5db; font-weight: 400; line-height: 2.2; 
             margin-bottom: 35px; max-width: 750px;
         }
-
         .inline-brand-logo {
             height: 1.4em; width: auto; vertical-align: middle;
             margin: 0 8px; display: inline-block;
-            filter: drop-shadow(0 0 2px rgba(255,255,255,0.2));
-            transform: translateY(-2px); opacity: 0.95;
+            filter: drop-shadow(0 0 2px rgba(255,255,255,0.2)); transform: translateY(-2px); opacity: 0.95;
         }
 
         /* --- MARQUEE --- */
@@ -178,7 +158,6 @@
         }
         .marquee-content:hover { animation-play-state: paused; }
         @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
         .reel-logo {
             height: 30px; width: auto; max-width: 110px;
             filter: drop-shadow(0 0 5px rgba(255,255,255,0.1)); 
@@ -209,24 +188,19 @@
         .btn-gold:hover {
             transform: translateY(-3px); box-shadow: 0 0 30px rgba(251, 191, 36, 0.6); filter: brightness(1.1);
         }
-
         .action-buttons { display: flex; gap: 15px; width: 100%; }
 
         /* --- CARDS & SCROLL --- */
         .content-section { padding: 40px 0 60px 0; background: var(--bg-black); position: relative; z-index: 20; }
-        
         .section-header {
             padding-left: 5%; font-size: 1.3rem; color: #fff; margin-bottom: 20px;
             font-weight: 700; display: flex; align-items: center; gap: 15px;
         }
         .section-header::before { content: ''; width: 4px; height: 24px; background: var(--irish-green); border-radius: 4px; }
-
         .scroll-wrapper { position: relative; }
         .scroll-wrapper::after { content: ''; position: absolute; top: 0; right: 0; height: 100%; width: 80px; background: linear-gradient(to right, transparent, var(--bg-black)); pointer-events: none; z-index: 5; }
         .scroll-wrapper::before { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 80px; background: linear-gradient(to left, transparent, var(--bg-black)); pointer-events: none; z-index: 5; }
-
         .row-scroll { display: flex; gap: 15px; padding: 10px 0 30px 0; overflow-x: hidden; white-space: nowrap; }
-
         .card {
             min-width: 240px; height: 140px; background: #111; border-radius: var(--radius);
             position: relative; overflow: hidden; cursor: pointer;
@@ -236,14 +210,12 @@
         .card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; filter: grayscale(80%) contrast(1.2) sepia(10%) brightness(0.8); }
         .card::after {
             content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E"),
-                              radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.9) 100%);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E"), radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.9) 100%);
             background-blend-mode: soft-light, normal; opacity: 1; transition: all 0.5s ease;
         }
         .card:hover { transform: scale(1.05); border-color: var(--irish-green); box-shadow: 0 15px 35px rgba(0,0,0,0.6); z-index: 50; }
         .card:hover img { opacity: 1; transform: scale(1.1); filter: grayscale(0%); }
         .card:hover::after { opacity: 0.5; }
-        
         .card-title {
             position: absolute; bottom: 0; left: 0; width: 100%;
             padding: 12px; background: linear-gradient(to top, black, transparent);
@@ -260,7 +232,6 @@
             display: grid; grid-template-columns: 1fr 0.8fr; gap: 60px;
             max-width: 1100px; margin: 0 auto; align-items: center;
         }
-
         .logo-grid-container {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             gap: 12px; margin-top: 25px;
@@ -281,7 +252,6 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
         .pricing-card:hover { border-color: var(--irish-green); box-shadow: 0 30px 60px rgba(16, 185, 129, 0.1); }
-        
         .ribbon {
             position: absolute; top: 25px; right: -35px; background: var(--premium-gold); color: black;
             padding: 6px 40px; font-size: 0.7rem; font-weight: 800;
@@ -307,7 +277,6 @@
             display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
             max-width: 1100px; margin: 0 auto; align-items: center;
         }
-
         .system-detect-wrapper {
             background: linear-gradient(145deg, rgba(20,20,20,0.8), rgba(10,10,10,0.95));
             border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
@@ -320,16 +289,14 @@
             animation: rotateGlow 10s linear infinite; pointer-events: none;
         }
         @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         .detect-spinner { font-size: 2rem; color: var(--irish-green); margin-bottom: 15px; animation: spin 1s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
-        
         .detected-icon {
             font-size: 3.5rem; color: var(--premium-gold); margin-bottom: 15px;
             animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-
+        
         .steps-container { display: flex; flex-direction: column; gap: 20px; }
         .step-card {
             background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
@@ -346,10 +313,33 @@
         .step-info h4 { margin: 0 0 5px 0; font-size: 1.1rem; color: white; }
         .step-info p { margin: 0; font-size: 0.95rem; color: #9ca3af; line-height: 1.5; }
 
+        /* --- ACCESS HUB (MODAL) --- */
+        .access-hub-title { text-align: center; margin-bottom: 25px; color: white; font-family: 'Montserrat', sans-serif; font-size: 1.8rem; }
+        .access-option {
+            display: flex; align-items: center; gap: 15px; padding: 15px 20px; border-radius: 12px;
+            margin-bottom: 15px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .access-option.primary { background: rgba(16, 185, 129, 0.1); border-color: var(--irish-green); }
+        .access-option.primary:hover { background: var(--irish-green); transform: scale(1.02); box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+        .access-option.primary .opt-icon { color: var(--irish-green); }
+        .access-option.primary:hover .opt-icon, .access-option.primary:hover .opt-text strong, .access-option.primary:hover .opt-text span { color: black !important; }
+        
+        .access-option.secondary { background: rgba(255,255,255,0.03); }
+        .access-option.secondary:hover { background: rgba(255,255,255,0.1); transform: translateX(5px); }
+        
+        .opt-icon { font-size: 1.5rem; color: #fff; width: 30px; text-align: center; }
+        .opt-text { display: flex; flex-direction: column; }
+        .opt-text strong { color: white; font-size: 1rem; }
+        .opt-text span { color: #888; font-size: 0.8rem; }
+        .pulse-badge {
+            margin-left: auto; background: var(--premium-gold); color: black; font-weight: bold; font-size: 0.7rem;
+            padding: 4px 10px; border-radius: 20px; text-transform: uppercase; animation: pulseBadge 2s infinite;
+        }
+        @keyframes pulseBadge { 0% { transform: scale(1); } 50% { transform: scale(1.1); box-shadow: 0 0 10px var(--premium-gold); } 100% { transform: scale(1); } }
+
         /* --- FAQ & MODALS --- */
         .faq-section { padding: 80px 5%; background: var(--bg-black); }
         .faq-container { max-width: 750px; margin: 0 auto; }
-        
         details {
             background: #0a0a0a; border: 1px solid #222; border-radius: 12px;
             margin-bottom: 12px; padding: 18px; transition: all 0.3s;
@@ -382,31 +372,6 @@
             border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;
             font-family: 'Inter', sans-serif; margin-bottom: 15px;
         }
-        
-        /* ACCESS HUB STYLES */
-        .access-hub-title { text-align: center; margin-bottom: 25px; color: white; font-family: 'Montserrat', sans-serif; font-size: 1.8rem; }
-        .access-option {
-            display: flex; align-items: center; gap: 15px; padding: 15px 20px; border-radius: 12px;
-            margin-bottom: 15px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; border: 1px solid rgba(255,255,255,0.1);
-        }
-        .access-option.primary { background: rgba(16, 185, 129, 0.1); border-color: var(--irish-green); }
-        .access-option.primary:hover { background: var(--irish-green); transform: scale(1.02); box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
-        .access-option.primary .opt-icon { color: var(--irish-green); }
-        .access-option.primary:hover .opt-icon, .access-option.primary:hover .opt-text strong, .access-option.primary:hover .opt-text span { color: black !important; }
-        
-        .access-option.secondary { background: rgba(255,255,255,0.03); }
-        .access-option.secondary:hover { background: rgba(255,255,255,0.1); transform: translateX(5px); }
-        
-        .opt-icon { font-size: 1.5rem; color: #fff; width: 30px; text-align: center; }
-        .opt-text { display: flex; flex-direction: column; }
-        .opt-text strong { color: white; font-size: 1rem; }
-        .opt-text span { color: #888; font-size: 0.8rem; }
-        .pulse-badge {
-            margin-left: auto; background: var(--premium-gold); color: black; font-weight: bold; font-size: 0.7rem;
-            padding: 4px 10px; border-radius: 20px; text-transform: uppercase; animation: pulseBadge 2s infinite;
-        }
-        @keyframes pulseBadge { 0% { transform: scale(1); } 50% { transform: scale(1.1); box-shadow: 0 0 10px var(--premium-gold); } 100% { transform: scale(1); } }
-
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -473,12 +438,10 @@
                     <img class="reel-logo" src="https://cdn.simpleicons.org/hbo/ffffff" alt="HBO">
                     <img class="reel-logo" src="https://cdn.simpleicons.org/dazn/ffffff" alt="DAZN">
                     <img class="reel-logo" src="ESPNLOGO.png" alt="ESPN">
-                    
                     <img class="reel-logo" src="skysportslogo.png" alt="Sky Sports">
                     <img class="reel-logo" src="tntsportslogo.png" alt="TNT Sports">
                     <img class="reel-logo" src="BEINLOGO.png" alt="BeIN Sports">
                     <img class="reel-logo" src="BTSPORTLOGO.png" alt="BT Sport">
-                    
                     <span class="reel-logo" style="font-size:20px; font-weight:900; letter-spacing:-1px; display:flex; align-items:center; color:white;">BOXNATION</span>
                     <img class="reel-logo" src="https://cdn.simpleicons.org/netflix/ffffff" alt="Netflix">
                     <img class="reel-logo" src="primevideo.png" alt="Prime Video">
@@ -513,48 +476,21 @@
         <h3 class="section-header reveal">Trending Movies & Series</h3>
         <div class="scroll-wrapper reveal">
             <div class="row-scroll">
-                <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=500&q=80" alt="Blockbuster">
-                    <div class="card-title">New Releases 4K</div>
-                </div>
-                <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&q=80" alt="Cinema">
-                    <div class="card-title">Cinema Classics</div>
-                </div>
-                <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=500&q=80" alt="TV Series">
-                    <div class="card-title">US & UK Series</div>
-                </div>
-                <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=500&q=80" alt="Docs">
-                    <div class="card-title">Documentaries</div>
-                </div>
-                <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=500&q=80" alt="Kids">
-                    <div class="card-title">Kids Zone</div>
-                </div>
+                <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=500&q=80"><div class="card-title">New Releases 4K</div></div>
+                <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&q=80"><div class="card-title">Cinema Classics</div></div>
+                <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=500&q=80"><div class="card-title">US & UK Series</div></div>
+                <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=500&q=80"><div class="card-title">Documentaries</div></div>
+                <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=500&q=80"><div class="card-title">Kids Zone</div></div>
             </div>
         </div>
 
         <h3 class="section-header reveal" style="margin-top: 40px;">Live Sport & Events</h3>
         <div class="scroll-wrapper reveal">
             <div class="row-scroll">
-                <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&q=80" alt="Football">
-                    <div class="card-title">Premier League</div>
-                </div>
-                <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=500&q=80" alt="Rugby">
-                    <div class="card-title">Six Nations / URC</div>
-                </div>
-                <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1509112756314-34a05903bfcd?w=500&q=80" alt="UFC">
-                    <div class="card-title">PPV Boxing / UFC</div>
-                </div>
-                <div class="card">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=500&q=80" alt="F1">
-                    <div class="card-title">Formula 1</div>
-                </div>
+                <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&q=80"><div class="card-title">Premier League</div></div>
+                <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=500&q=80"><div class="card-title">Six Nations / URC</div></div>
+                <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1509112756314-34a05903bfcd?w=500&q=80"><div class="card-title">PPV Boxing / UFC</div></div>
+                <div class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=500&q=80"><div class="card-title">Formula 1</div></div>
             </div>
         </div>
     </div>
@@ -562,27 +498,21 @@
     <div id="subscribe" class="value-section">
         <div class="value-grid">
             <div class="reveal">
-                <h2 style="font-size: 2.5rem; margin-top:0; line-height: 1.1; color: white;">Why Overpay?</h2>
+                <h2 style="font-size: 2.5rem; margin-top:0; color: white;">Why Overpay?</h2>
                 <p style="font-size: 1rem; color: #9ca3af; line-height: 1.7; margin-bottom: 40px;">
-                    Traditional cable and individual streaming subscriptions can cost over <strong>€200+/month</strong>. 
-                    We combine <strong>every major service</strong> into a single, high-speed interface for a fraction of the price.
+                    Traditional subscriptions cost over <strong>€200+/month</strong>. We combine every major service into one dashboard.
                 </p>
                 
-                <h4 style="color: white; margin-bottom: 20px; font-weight: 600; font-size: 1rem;">Included Libraries:</h4>
                 <div class="logo-grid-container">
-                    <div class="logo-card" title="Netflix"><img src="https://cdn.simpleicons.org/netflix/E50914" alt="Netflix"></div>
-                    <div class="logo-card" title="Prime Video"><img src="primevideo.png" alt="Prime Video"></div>
-                    <div class="logo-card" title="Disney+"><img src="disneyicon.png" alt="Disney+"></div>
-                    <div class="logo-card" title="Apple TV+"><img src="https://cdn.simpleicons.org/appletv/ffffff" alt="Apple TV"></div>
-                    <div class="logo-card" title="Paramount+"><img src="https://cdn.simpleicons.org/paramountplus/0066CC" alt="Paramount"></div>
-                    <div class="logo-card" title="HBO"><img src="https://cdn.simpleicons.org/hbo/ffffff" alt="HBO"></div>
-                    
-                    <div class="logo-card" title="Sky Sports"><img src="skysportslogo.png" alt="Sky Sports"></div>
-                    <div class="logo-card" title="DAZN"><img src="https://cdn.simpleicons.org/dazn/ffffff" alt="DAZN"></div>
-                    <div class="logo-card" title="UFC"><img src="https://cdn.simpleicons.org/ufc/D20A0A" alt="UFC"></div>
-                    <div class="logo-card" title="TNT Sports"><img src="tntsportslogo.png" alt="TNT Sports"></div>
-                    <div class="logo-card" title="BT Sport"><img src="BTSPORTLOGO.png" alt="BT Sport"></div>
-                    <div class="logo-card" title="BeIN Sports"><img src="BEINLOGO.png" alt="BeIN"></div>
+                    <div class="logo-card"><img src="https://cdn.simpleicons.org/netflix/E50914"></div>
+                    <div class="logo-card"><img src="primevideo.png"></div>
+                    <div class="logo-card"><img src="disneyicon.png"></div>
+                    <div class="logo-card"><img src="https://cdn.simpleicons.org/appletv/ffffff"></div>
+                    <div class="logo-card"><img src="skysportslogo.png"></div>
+                    <div class="logo-card"><img src="https://cdn.simpleicons.org/dazn/ffffff"></div>
+                    <div class="logo-card"><img src="tntsportslogo.png"></div>
+                    <div class="logo-card"><img src="BTSPORTLOGO.png"></div>
+                    <div class="logo-card"><img src="BEINLOGO.png"></div>
                 </div>
             </div>
 
@@ -596,16 +526,10 @@
                     <li><i class="fas fa-check check-icon"></i> 5,000+ Live Channels</li>
                     <li><i class="fas fa-check check-icon"></i> PPV Events Included</li>
                     <li><i class="fas fa-check check-icon"></i> Anti-Buffer Tech</li>
-                    <li><i class="fas fa-check check-icon"></i> WhatsApp Support</li>
                 </ul>
                 
                 <div class="action-buttons">
-                    <a href="https://wa.me/447861968659?text=I'm%20interested%20in%20the%20Emerald%20Pass" target="_blank" class="btn-base btn-emerald">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <button onclick="openContactModal()" class="btn-base btn-gold">
-                        <i class="fas fa-envelope"></i> Email Us
-                    </button>
+                    <button onclick="openAccessModal()" class="btn-base btn-emerald" style="width:100%"><i class="fas fa-bolt"></i> Get Access</button>
                 </div>
                 <p style="text-align:center; color:#555; font-size:0.75rem; margin-top:20px;">No Contract. Cancel Anytime.</p>
             </div>
@@ -614,7 +538,6 @@
 
     <div id="download-section" class="content-section" style="border-top: 1px solid #111;">
         <div class="reveal download-layout">
-            
             <div class="system-detect-wrapper">
                 <div class="detect-status" id="detect-loading">
                     <i class="fas fa-circle-notch detect-spinner"></i>
@@ -629,65 +552,30 @@
                     </a>
                 </div>
             </div>
-
             <div class="steps-container">
                 <h2 style="font-size:2rem; margin-bottom:15px; margin-top:0;">Get Access in 3 Steps</h2>
-                
                 <div class="step-card">
                     <div class="step-num">1</div>
-                    <div class="step-info">
-                        <h4>Download the Player</h4>
-                        <p>Use the auto-detected link to install the app on your device.</p>
-                    </div>
+                    <div class="step-info"><h4>Download the Player</h4><p>Use the auto-detected link to install the app on your device.</p></div>
                 </div>
-
                 <div class="step-card">
                     <div class="step-num">2</div>
-                    <div class="step-info">
-                        <h4>Get Your Login</h4>
-                        <p>Purchase a 1-month pass via WhatsApp to receive your username & password.</p>
-                    </div>
+                    <div class="step-info"><h4>Get Your Login</h4><p>Purchase a 1-month pass via WhatsApp to receive your username & password.</p></div>
                 </div>
-
                 <div class="step-card">
                     <div class="step-num">3</div>
-                    <div class="step-info">
-                        <h4>Login & Watch</h4>
-                        <p>Enter your details into the player. Your 5,000+ channels load instantly.</p>
-                    </div>
+                    <div class="step-info"><h4>Login & Watch</h4><p>Enter your details into the player. Your 5,000+ channels load instantly.</p></div>
                 </div>
             </div>
-
         </div>
     </div>
 
     <div class="faq-section">
         <div class="faq-container reveal">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2 style="font-size: 2rem; margin-bottom: 10px;">Common Questions</h2>
-                <p style="color: #666; font-size: 0.95rem;">Everything you need to know to get started.</p>
-            </div>
-            
-            <details>
-                <summary>What devices can I use?</summary>
-                <div class="faq-content">IDTV works flawlessly on Amazon Firestick, Android TV boxes (Nvidia Shield), Smart TVs (LG/Samsung), iPhones, Android phones, and Laptops.</div>
-            </details>
-            <details>
-                <summary>Do I need a VPN?</summary>
-                <div class="faq-content">No. Our servers are configured to work without a VPN in Ireland and the UK. However, if you already have one, the service is fully compatible.</div>
-            </details>
-            <details>
-                <summary>How fast is the setup?</summary>
-                <div class="faq-content">Instant. Once you contact us via WhatsApp, we typically respond within minutes. The actual setup on your device takes about 5 minutes with our step-by-step guide.</div>
-            </details> 
-            <details>
-                <summary>Is Live Sport included?</summary>
-                <div class="faq-content">Yes. The subscription includes all 
-                    <img src="skysportslogo.png" class="inline-brand-logo" alt="Sky Sports">, 
-                    <img src="tntsportslogo.png" class="inline-brand-logo" alt="TNT Sports">
-                    channels as standard.
-                </div>
-            </details>
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Common Questions</h2>
+            <details><summary>What devices are supported?</summary><div class="faq-content">Firestick, Android TV, Smart TV, iPhone, PC.</div></details>
+            <details><summary>Do I need a VPN?</summary><div class="faq-content">No, our servers are secure and private.</div></details>
+            <details><summary>Is setup difficult?</summary><div class="faq-content">Setup takes less than 5 minutes.</div></details>
         </div>
     </div>
 
@@ -699,9 +587,6 @@
             <a onclick="openModal('terms')">Terms of Service</a>
             <a onclick="openContactModal()">Contact Support</a>
         </div>
-        <p style="color:#444; font-size: 0.7rem; max-width: 550px; margin: 25px auto 0 auto;">
-            Disclaimer: We do not host any content. All content is aggregated via third-party providers. We are not responsible for the legality of the stream sources.
-        </p>
     </footer>
 
     <div id="accessModal" class="modal-overlay" onclick="if(event.target==this) closeAccessModal()">
@@ -749,45 +634,33 @@
     </div>
 
     <script>
-        // PERFORMANCE OPTIMIZED SCROLLING
+        // Carousel Logic
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        setInterval(() => {
+            slides[slideIndex].classList.remove('active');
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add('active');
+        }, 5000);
+
+        // Infinite Scroll Logic
         const scrollers = document.querySelectorAll('.row-scroll');
         scrollers.forEach(scroller => {
             const content = Array.from(scroller.children);
-            content.forEach(item => {
-                const clone = item.cloneNode(true);
-                scroller.appendChild(clone);
-            });
-
-            let scrollPos = 0;
-            const speed = 0.5;
-            let animationId = null;
-
+            content.forEach(item => scroller.appendChild(item.cloneNode(true)));
+            let pos = 0; 
             function animate() {
-                if (scroller.matches(':hover')) {
-                    animationId = requestAnimationFrame(animate);
-                    return; 
+                if(!scroller.matches(':hover')) {
+                    pos += 0.5;
+                    if(pos >= scroller.scrollWidth/2) pos = 0;
+                    scroller.scrollLeft = pos;
                 }
-                scrollPos += speed;
-                if (scrollPos >= scroller.scrollWidth / 2) {
-                    scrollPos = 0;
-                }
-                scroller.scrollLeft = scrollPos;
-                animationId = requestAnimationFrame(animate);
+                requestAnimationFrame(animate);
             }
             animate();
         });
 
-        // Slideshow
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        function nextSlide() {
-            slides[currentSlideIndex].classList.remove('active');
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            slides[currentSlideIndex].classList.add('active');
-        }
-        setInterval(nextSlide, 5000);
-
-        // Scroll Reveal
+        // Scroll Reveal & System Detect
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
@@ -803,48 +676,22 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // System Detection
+        // System Detection Logic
         let detectionRun = false;
         function startSystemDetection() {
             if(detectionRun) return;
             detectionRun = true;
-            
-            const loading = document.getElementById('detect-loading');
-            const success = document.getElementById('detect-success');
-            const icon = document.getElementById('os-icon');
-            const name = document.getElementById('os-name');
-            const btn = document.getElementById('smart-dl-btn');
-            
-            // Detect OS
-            let os = "Windows";
-            let link = "https://www.stremio.com/downloads";
-            let iconClass = "fa-windows";
-            
-            const ua = navigator.userAgent;
-            if (/iPad|iPhone|iPod/.test(ua)) {
-                os = "iOS / Apple";
-                link = "https://web.strem.io/";
-                iconClass = "fa-apple";
-            } else if (/Android/.test(ua)) {
-                os = "Android / TV";
-                link = "https://play.google.com/store/apps/details?id=com.stremio.one";
-                iconClass = "fa-android";
-            } else if (/Mac/.test(ua)) {
-                os = "macOS";
-                iconClass = "fa-apple";
-            } else if (/Linux/.test(ua)) {
-                os = "Linux";
-                iconClass = "fa-linux";
-            }
-
-            // Simulate Scan Delay (1.5s)
             setTimeout(() => {
-                loading.style.display = 'none';
-                success.style.display = 'flex';
-                
-                name.innerText = os;
-                icon.className = `fab ${iconClass} detected-icon`;
-                btn.href = link;
+                document.getElementById('detect-loading').style.display = 'none';
+                document.getElementById('detect-success').style.display = 'block';
+                const ua = navigator.userAgent;
+                let os = "Windows", link = "https://www.stremio.com/downloads", icon = "fa-windows";
+                if(/iPad|iPhone/.test(ua)) { os="iOS"; link="https://web.strem.io/"; icon="fa-apple"; }
+                else if(/Android/.test(ua)) { os="Android"; link="https://play.google.com/store/apps/details?id=com.stremio.one"; icon="fa-android"; }
+                else if(/Mac/.test(ua)) { os="macOS"; icon="fa-apple"; }
+                document.getElementById('os-name').innerText = os;
+                document.getElementById('os-icon').className = `fab ${icon} detected-icon`;
+                document.getElementById('smart-dl-btn').href = link;
             }, 1500);
         }
 
