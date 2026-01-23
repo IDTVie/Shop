@@ -8,14 +8,15 @@
     <meta name="description" content="The #1 Rated IPTV Provider in Ireland & UK. Unlock Sky Sports, TNT, GAA, Netflix, and 15,000+ Channels in 4K Anti-Freeze Quality. Instant Setup for Firestick & Android. €30/mo.">
     <meta name="keywords" content="IPTV Ireland, Best IPTV UK, Buy IPTV, Sky Sports Stream, Cheap Netflix, Firestick 4K Jailbreak, Android TV Box, Premier League Streaming, GAA GO Free, IDTV Eire">
     
-    <link rel="preload" as="image" href="anthony.jpg">
+    <link rel="preload" as="image" href="anthony.webp">
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%23050505'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%2310B981'/%3E%3Cstop offset='100%25' stop-color='%23fbbf24'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='50%25' y='57%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='190' fill='url(%23grad)'%3EIDTV%3C/text%3E%3C/svg%3E">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     
     <link rel="stylesheet" href="style.css">
 
@@ -30,41 +31,7 @@
           "description": "High-quality 4K streaming service for Ireland and UK. Access Sky Sports, Movies, and Live TV on Firestick without buffering.",
           "provider": { "@type": "Organization", "name": "IDTV Éire" },
           "areaServed": ["IE", "GB"],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Streaming Packages",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": { "@type": "Service", "name": "Emerald Pass Monthly" },
-                "price": "30.00",
-                "priceCurrency": "EUR",
-                "availability": "https://schema.org/InStock"
-              }
-            ]
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "1250",
-            "bestRating": "5",
-            "worstRating": "1"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Is IPTV legal in Ireland?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Our service operates privately to ensure secure and encrypted streaming for all users." }
-            },
-            {
-              "@type": "Question",
-              "name": "Does this work on Firestick?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes, our app is fully optimized for Amazon Firestick 4K, Android TV, and Nvidia Shield." }
-            }
-          ]
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1250" }
         }
       ]
     }
@@ -85,9 +52,7 @@
             <i class="fas fa-play-circle logo-icon"></i>
             <div class="logo-text">IDTV <span>Éire</span></div>
         </a>
-        
         <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-        
         <div class="nav-actions" id="navMenu">
             <a href="#" class="login-link">Member Login</a>
             <a href="#subscribe" class="nav-btn-outline" onclick="toggleMenu()">Join the Club</a>
@@ -95,9 +60,9 @@
     </nav>
 
     <div class="hero-container">
-        <div class="carousel-slide active" style="background-image: url('anthony.jpg');"></div>
+        <div class="carousel-slide active" style="background-image: url('anthony.webp');"></div>
         <div class="carousel-slide" style="background-image: url('katie.jpg');"></div>
-        <div class="carousel-slide" style="background-image: url('troy.jpg');"></div>
+        <div class="carousel-slide" style="background-image: url('troy.avif');"></div>
         
         <div class="hero-overlay"></div>
 
@@ -110,33 +75,27 @@
             
             <div class="marquee-wrapper">
                 <div class="marquee-content">
-                    <img class="reel-logo" src="https://cdn.simpleicons.org/netflix/ffffff" alt="Netflix">
-                    <img class="reel-logo" src="primevideo.png" alt="Prime Video">
-                    <img class="reel-logo" src="disneyicon.png" alt="Disney+">
-                    <img class="reel-logo" src="skysportslogo.png" alt="Sky Sports">
-                    <img class="reel-logo" src="tntsportslogo.png" alt="TNT Sports">
-                    <img class="reel-logo" src="BEINLOGO.png" alt="BeIN Sports">
-                    <img class="reel-logo" src="BTSPORTLOGO.png" alt="BT Sport">
-                    <img class="reel-logo" src="ESPNLOGO.png" alt="ESPN">
-                    <img class="reel-logo" src="https://cdn.simpleicons.org/appletv/ffffff" alt="Apple TV">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/netflix/ffffff" alt="Netflix" loading="lazy" width="80" height="30">
+                    <img class="reel-logo" src="primevideo.png" alt="Prime" loading="lazy" width="80" height="30">
+                    <img class="reel-logo" src="disneyicon.png" alt="Disney+" loading="lazy" width="80" height="30">
+                    <img class="reel-logo" src="skysportslogo.png" alt="Sky" loading="lazy" width="80" height="30">
+                    <img class="reel-logo" src="tntsportslogo.png" alt="TNT" loading="lazy" width="80" height="30">
+                    <img class="reel-logo" src="BEINLOGO.png" alt="BeIN" loading="lazy" width="80" height="30">
+                    <img class="reel-logo" src="BTSPORTLOGO.png" alt="BT" loading="lazy" width="80" height="30">
+                    <img class="reel-logo" src="ESPNLOGO.png" alt="ESPN" loading="lazy" width="80" height="30">
+                    <img class="reel-logo" src="https://cdn.simpleicons.org/appletv/ffffff" alt="Apple TV" loading="lazy" width="80" height="30">
                     <span class="reel-logo" style="font-size:20px; font-weight:900; color:white; display:flex; align-items:center;">BOXNATION</span>
-                    <img class="reel-logo" src="https://cdn.simpleicons.org/netflix/ffffff" alt="Netflix">
-                    <img class="reel-logo" src="primevideo.png" alt="Prime Video">
-                    <img class="reel-logo" src="disneyicon.png" alt="Disney+">
                 </div>
             </div>
 
             <p>
                 Stop paying multiple bills. Get instant access to 
-                <img src="https://cdn.simpleicons.org/netflix/ffffff" class="inline-brand-logo" alt="Netflix">
-                <img src="primevideo.png" class="inline-brand-logo" alt="Prime">
-                <img src="disneyicon.png" class="inline-brand-logo" alt="Disney">
-                <img src="skysportslogo.png" class="inline-brand-logo" alt="Sky">
-                <img src="tntsportslogo.png" class="inline-brand-logo" alt="TNT">
-                <img src="BTSPORTLOGO.png" class="inline-brand-logo" alt="BT">
-                <img src="BEINLOGO.png" class="inline-brand-logo" alt="BeIN">
-                <img src="https://cdn.simpleicons.org/dazn/ffffff" class="inline-brand-logo" alt="DAZN">
-                <img src="https://cdn.simpleicons.org/hbo/ffffff" class="inline-brand-logo" alt="HBO">
+                <img src="https://cdn.simpleicons.org/netflix/ffffff" class="inline-brand-logo" alt="Netflix" loading="lazy">
+                <img src="primevideo.png" class="inline-brand-logo" alt="Prime" loading="lazy">
+                <img src="disneyicon.png" class="inline-brand-logo" alt="Disney" loading="lazy">
+                <img src="skysportslogo.png" class="inline-brand-logo" alt="Sky" loading="lazy">
+                <img src="tntsportslogo.png" class="inline-brand-logo" alt="TNT" loading="lazy">
+                <img src="https://cdn.simpleicons.org/dazn/ffffff" class="inline-brand-logo" alt="DAZN" loading="lazy">
                 in one premium dashboard. <strong>IDTV offers much, much more.</strong>
             </p>
             
@@ -184,24 +143,19 @@
             <div class="value-text reveal">
                 <h2>Why Overpay?</h2>
                 <p>
-                    Traditional subscriptions like Sky Glass, Virgin Media, and individual apps cost over <strong>€200/month</strong> combined. 
-                    <br><br>
-                    With IDTV, you get <strong>Sky Sports (€40), TNT Sports (€30), Netflix Premium (€20), Disney+ (€10), and PPV Events (€30 each)</strong> all included in one simple dashboard.
+                    Traditional subscriptions cost over <strong>€200/month</strong> combined. With IDTV, you get Sky Sports, TNT, Netflix, Disney+, and PPV all included.
                 </p>
                 
                 <div class="logo-grid-container">
-                    <div class="logo-card"><img src="https://cdn.simpleicons.org/netflix/E50914" alt="Netflix"></div>
-                    <div class="logo-card"><img src="primevideo.png" alt="Prime"></div>
-                    <div class="logo-card"><img src="disneyicon.png" alt="Disney"></div>
-                    <div class="logo-card"><img src="skysportslogo.png" alt="Sky"></div>
-                    <div class="logo-card"><img src="tntsportslogo.png" alt="TNT"></div>
-                    <div class="logo-card"><img src="BTSPORTLOGO.png" alt="BT"></div>
-                    <div class="logo-card"><img src="BEINLOGO.png" alt="BeIN"></div>
-                    <div class="logo-card"><img src="https://cdn.simpleicons.org/dazn/ffffff" alt="DAZN"></div>
-                    <div class="logo-card"><img src="https://cdn.simpleicons.org/appletv/ffffff" alt="AppleTV"></div>
-                    <div class="logo-card"><img src="https://cdn.simpleicons.org/paramountplus/ffffff" alt="Paramount"></div>
-                    <div class="logo-card"><img src="https://cdn.simpleicons.org/hbo/ffffff" alt="HBO"></div>
-                    <div class="logo-card"><img src="ESPNLOGO.png" alt="ESPN"></div>
+                    <div class="logo-card"><img loading="lazy" src="https://cdn.simpleicons.org/netflix/E50914" alt="Netflix"></div>
+                    <div class="logo-card"><img loading="lazy" src="primevideo.png" alt="Prime"></div>
+                    <div class="logo-card"><img loading="lazy" src="disneyicon.png" alt="Disney"></div>
+                    <div class="logo-card"><img loading="lazy" src="skysportslogo.png" alt="Sky"></div>
+                    <div class="logo-card"><img loading="lazy" src="tntsportslogo.png" alt="TNT"></div>
+                    <div class="logo-card"><img loading="lazy" src="BTSPORTLOGO.png" alt="BT"></div>
+                    <div class="logo-card"><img loading="lazy" src="https://cdn.simpleicons.org/dazn/ffffff" alt="DAZN"></div>
+                    <div class="logo-card"><img loading="lazy" src="https://cdn.simpleicons.org/appletv/ffffff" alt="AppleTV"></div>
+                    <div class="logo-card"><img loading="lazy" src="https://cdn.simpleicons.org/paramountplus/ffffff" alt="Paramount"></div>
                 </div>
             </div>
 
@@ -211,16 +165,13 @@
                 <div class="price-display">
                     <span class="currency">€</span>30<span class="period">/mo</span>
                 </div>
-                
                 <div class="divider"></div>
-                
                 <ul class="feature-list">
                     <li><div class="check-circle"><i class="fas fa-check"></i></div> All Streaming Platforms</li>
                     <li><div class="check-circle"><i class="fas fa-check"></i></div> 15,000+ Live Channels</li>
                     <li><div class="check-circle"><i class="fas fa-check"></i></div> PPV Events Included</li>
                     <li><div class="check-circle"><i class="fas fa-check"></i></div> Anti-Buffer Tech</li>
                 </ul>
-                
                 <button onclick="openAccessModal()" class="btn-base btn-emerald full-width glow-effect">
                     <i class="fas fa-bolt"></i> Get Access
                 </button>
@@ -241,7 +192,6 @@
                         <i id="os-icon" class="fab fa-android"></i>
                     </div>
                     <div class="detected-text">Optimized for <span id="os-name" class="highlight-text">Android</span></div>
-                    <div class="detected-subtext">Latest Version (v4.4) • Secure</div>
                     <a id="smart-dl-btn" href="#" class="btn-base btn-gold glow-effect">
                         <i class="fas fa-download"></i> Download Player
                     </a>
@@ -250,9 +200,9 @@
 
             <div class="steps-container">
                 <h2>Get Access in 3 Steps</h2>
-                <div class="step-card"><div class="step-num">1</div><div class="step-txt"><h4>Download the Player</h4><p>Use the auto-detected link to install the app on your device.</p></div></div>
-                <div class="step-card"><div class="step-num">2</div><div class="step-txt"><h4>Get Your Login</h4><p>Purchase a 1-month pass via WhatsApp to receive your username & password.</p></div></div>
-                <div class="step-card"><div class="step-num">3</div><div class="step-txt"><h4>Login & Watch</h4><p>Enter your details into the player. Your 5,000+ channels load instantly.</p></div></div>
+                <div class="step-card"><div class="step-num">1</div><div class="step-txt"><h4>Download</h4><p>Install the player.</p></div></div>
+                <div class="step-card"><div class="step-num">2</div><div class="step-txt"><h4>Login</h4><p>Get instant credentials.</p></div></div>
+                <div class="step-card"><div class="step-num">3</div><div class="step-txt"><h4>Watch</h4><p>Enjoy 5,000+ channels.</p></div></div>
             </div>
         </div>
     </div>
@@ -270,18 +220,12 @@
         <div class="blog-container reveal">
             <div class="blog-header">
                 <i class="fas fa-satellite-dish" style="color:var(--premium-gold)"></i>
-                <span>Latest Streaming News & Updates</span>
+                <span>Streaming News</span>
             </div>
-            
             <div class="blog-viewport">
-                <div class="blog-slide active"><h3>Stop Overpaying for Sky Glass</h3><p>Why lock yourself into an 18-month contract costing €200+ monthly? Switch to the <strong>best IPTV Ireland</strong> service today. Get 4K quality, EPG, and instant switching for a simple flat fee.</p></div>
-                <div class="blog-slide"><h3>The Ultimate Firestick 4K Unlock</h3><p>Is your Amazon Firestick running slow? Our service is optimized specifically for <strong>Fire TV Stick 4K Max</strong>. We provide a lightweight, custom app that eliminates bloatware.</p></div>
-                <div class="blog-slide"><h3>Watch Every Premier League Game</h3><p>Never miss a moment. While broadcasters block Saturday 3PM kick-offs, our <strong>premium sports streams</strong> bypass these blackouts. Watch Man Utd, Liverpool, and Arsenal live in FHD.</p></div>
-                <div class="blog-slide"><h3>Netflix, Disney+, and Prime All-in-One</h3><p>Our VOD library integrates the full catalogs of <strong>Netflix, Disney+, HBO Max, and Amazon Prime</strong> into one searchable dashboard.</p></div>
-                <div class="blog-slide"><h3>Best Setup for Nvidia Shield</h3><p>Power users know that the <strong>Nvidia Shield Pro</strong> is the king of streaming. Our service supports high-bitrate playback, Dolby Atmos, and 4K HDR10+.</p></div>
-                <div class="blog-slide"><h3>GAA GO & RTE Player Alternatives</h3><p>Living abroad? We provide crystal clear feeds of <strong>RTE 1, RTE 2, TG4, and Virgin Media One</strong>. Follow the All-Ireland Championships anywhere.</p></div>
-                <div class="blog-slide"><h3>Free Access to PPV Boxing</h3><p>Pay-Per-View events can cost €30 each. With IDTV, every major <strong>Tyson Fury & McGregor fight</strong> is included standard.</p></div>
-                <div class="blog-slide"><h3>What is Anti-Freeze Technology?</h3><p>Buffering ruins movie night. Our servers load-balance your connection automatically, guaranteeing a smooth stream during the World Cup or Super Bowl.</p></div>
+                <div class="blog-slide active"><h3>Stop Overpaying for Sky</h3><p>Why pay €100+ monthly? Switch to IDTV for 4K quality and savings.</p></div>
+                <div class="blog-slide"><h3>Unlock Firestick 4K</h3><p>Our app is optimized for Fire TV Stick 4K Max. No bloatware, just speed.</p></div>
+                <div class="blog-slide"><h3>Watch Premier League</h3><p>We bypass 3PM blackouts. Watch every game live in FHD.</p></div>
             </div>
             <div class="blog-progress-bar"><div class="progress-fill"></div></div>
         </div>
@@ -290,10 +234,10 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo"><i class="fas fa-play-circle" style="color:var(--irish-green)"></i> IDTV <span>Éire</span></div>
-            <p>&copy; 2024 IDTV Éire. All rights reserved.</p>
+            <p>&copy; 2024 IDTV Éire.</p>
             <div class="footer-links">
-                <a onclick="openModal('privacy')">Privacy Policy</a>
-                <a onclick="openContactModal()">Contact Support</a>
+                <a onclick="openModal('privacy')">Privacy</a>
+                <a onclick="openContactModal()">Support</a>
             </div>
         </div>
     </footer>
@@ -301,19 +245,19 @@
     <div id="accessModal" class="modal-overlay" onclick="if(event.target==this) closeAccessModal()">
         <div class="modal-content glass-modal">
             <span class="modal-close" onclick="closeAccessModal()">&times;</span>
-            <h2 class="access-hub-title">Choose Connection Method</h2>
+            <h2 class="access-hub-title">Connect</h2>
             <a href="https://wa.me/447861968659?text=I'm%20interested%20in%20Getting%20Access" target="_blank" class="access-option primary glow-effect">
                 <i class="fab fa-whatsapp opt-icon"></i>
-                <div class="opt-text"><strong>WhatsApp Support</strong><span>Instant Setup (Recommended)</span></div>
+                <div class="opt-text"><strong>WhatsApp</strong><span>Instant Setup</span></div>
                 <div class="pulse-badge">FASTEST</div>
             </a>
             <div onclick="openLiveChat()" class="access-option secondary">
                 <i class="fas fa-comments opt-icon gold-icon"></i>
-                <div class="opt-text"><strong>Live Chat</strong><span>Speak with an agent now</span></div>
+                <div class="opt-text"><strong>Live Chat</strong></div>
             </div>
             <div onclick="swapToEmailForm()" class="access-option secondary">
                 <i class="fas fa-envelope opt-icon gray-icon"></i>
-                <div class="opt-text"><strong>Send Email</strong><span>Response within 24 hours</span></div>
+                <div class="opt-text"><strong>Email</strong></div>
             </div>
         </div>
     </div>
